@@ -1,0 +1,5 @@
+why did you choose datatypes
+reasons for connections between tables (primary and foreign key alike)
+what errors in dataset
+how did you find completeness in the dataset
+how did you address those errors
