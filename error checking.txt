@@ -1,0 +1,32 @@
+Actor: no NULL
+
+Film_text: no NULL
+
+Catergory: no NULL
+
+Film_category: no NULL
+
+FILM: no NULL
+
+Language: no NULL
+
+Inventory: no NULL
+
+Film_actor: no NULL
+
+City: no NULL
+
+Country: no NULL
+
+Store: no NULL
+
+Address :address_id =  257 (MISSING), 518 (MISSING), adress_id @ 1-4 postal_code NULL @ 1-2 phone NULL
+
+Staff: staff_id @ 2 picture (corrupted?/NULL), staff_id @ 2 password missing
+
+Customer: address_id not used 1-4, 257, 518
+
+Rental: 321 missing ,2247 missing ,6579 missing, 9426 missing, 15592 missing, NULL on return_date 
+check "return_date(NULL) (rental.csv).csv" (Not important)
+
+Payment: payment_id 424, 7011, 10840, 14675, 15458 have NULL on rental_id
