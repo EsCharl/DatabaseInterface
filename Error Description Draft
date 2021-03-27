@@ -1,0 +1,21 @@
+From Address.csv, two of the Address id were missing, which are address id 257 and 518. Other than that, it also appears that postal code for address id 1-4 appears to be blank. While phone number for address id 1,2 are empty.
+
+From Staff.csv, staff id 1 have corrupted code in the "picture" column, while staff id 2 password is either "NULL" or it's missing from the database.
+
+From Customer.csv, a few address_id recorded in Address.csv were not used, which are: address id 1, 2, 3, 4, 257, 518.
+
+From Rental.csv. rental id 321, 2247, 6579, 9426, 15592 were missing from the database.
+
+From Payment.csv, the rental id from payment id 424, 7011, 10840, 14675, 15458 are missing.
+
+
+
+By conclusion, the type of error can be concluded as follows:
+
+- Missing number from auto increment data (e.g. missing Address_id from Address.csv)
+
+- Null/Blank bracket on data that shouldn't be empty (e.g. missing Rental_id in Payment.csv)
+
+- Missing referral key from other dataset (e.g. Address_id present in Address.csv but missing from Customer.csv)
+
+- Corrupted file (e.g. corrupted picture file from Staff.csv)
