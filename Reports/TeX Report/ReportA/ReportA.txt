@@ -2,8 +2,10 @@
 \usepackage{graphicx}
 \usepackage{float}
 
-\title{COMP1044 Coursework Assignment 2 Report A \\ Group 15 / Chew Language}
+\title{COMP1044 Coursework Assignment 2 Report A}
 \author{
+	Group 15 / Chew Language\\
+	\and
 	Leong Chang Yung, 20307078
 	\and
 	Lucas Dylan Purnell, XXXXXXXX
@@ -77,10 +79,6 @@
 	The other error was the existence of a corrupted picture file within \emph{staff.csv}. This corruption made it impossible to view or display the aforementioned picture. 
 	We decided that leaving a corrupted picture within the staff database was not of high importance and wouldn’t decrease the completeness or understandability of the dataset,
 	so we just removed the picture. A partial solution was found in making the field type storing the picture as \textbf{longblob}. 
-	\begin{figure}[H]
-		\includegraphics[width=13cm]{staff-picture}
-		\caption{The partially recovered staff photo.}
-	\end{figure}
 	This allowed the picture to be imported, albeit still in an incomplete state. 
 
 \end{document}

@@ -1,0 +1,184 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.3) (preloaded format=pdflatex 2021.3.18)  1 APR 2021 21:53
+entering extended mode
+**"C:/Users/kytho/Documents/GitHub/DatabaseInterface/Reports/TeX Report/ReportA
+/ReportA.tex"
+
+(C:/Users/kytho/Documents/GitHub/DatabaseInterface/Reports/TeX Report/ReportA/R
+eportA.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count179
+\c@section=\count180
+\c@subsection=\count181
+\c@subsubsection=\count182
+\c@paragraph=\count183
+\c@subparagraph=\count184
+\c@figure=\count185
+\c@table=\count186
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+) (C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count187
+\float@exts=\toks16
+\float@box=\box47
+\@float@everytoks=\toks17
+\@floatcapt=\box48
+)
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
+File: l3backend-pdftex.def 2021-03-02 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count188
+\l__pdf_internal_box=\box49
+)
+No file ReportA.aux.
+\openout1 = `ReportA.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count189
+\scratchdimen=\dimen141
+\scratchbox=\box50
+\nofMPsegments=\count190
+\nofMParguments=\count191
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count192
+\MPscratchDim=\dimen142
+\MPnumerator=\count193
+\makeMPintoPDFobject=\count194
+\everyMPtoPDFconversion=\toks19
+)
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\kytho\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
+File: epstopdf-sys.cfg 2021/03/17 v1.0 Configuration of epstopdf for MiKTeX
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 24.
+ [1
+
+{C:/Users/kytho/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+<DBI CourseworkA.png, id=8, 1039.885pt x 1476.51625pt>
+File: DBI CourseworkA.png Graphic file (type png)
+<use DBI CourseworkA.png>
+Package pdftex.def Info: DBI CourseworkA.png  used on input line 28.
+(pdftex.def)             Requested size: 345.0pt x 489.8428pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
+
+ []
+
+[2 <C:/Users/kytho/Documents/GitHub/DatabaseInterface/Reports/TeX Report/Report
+A/DBI CourseworkA.png>]
+Overfull \hbox (6.66469pt too wide) in paragraph at lines 49--49
+[]\OT1/cmr/bx/n/14.4 Reasoning for Pri-mary and For-eign Key Choice 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--73
+
+ []
+
+[3]
+<staff-picture.png, id=21, 91.09032pt x 88.07906pt>
+File: staff-picture.png Graphic file (type png)
+<use staff-picture.png>
+Package pdftex.def Info: staff-picture.png  used on input line 83.
+(pdftex.def)             Requested size: 369.88582pt x 357.76512pt.
+
+Overfull \hbox (24.88582pt too wide) in paragraph at lines 83--84
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--85
+
+ []
+
+[4] [5 <C:/Users/kytho/Documents/GitHub/DatabaseInterface/Reports/TeX Report/Re
+portA/staff-picture.png (PNG copy)
+!pdfTeX error: pdflatex (file C:/Users/kytho/Documents/GitHub/DatabaseInterface
+/Reports/TeX Report/ReportA/staff-picture.png): writepng: fseek in PNG file fai
+led
+ ==> Fatal error occurred, no output PDF file produced!
