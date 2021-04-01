@@ -38,7 +38,7 @@
 	\\\\	
 	For all \textbf{varchar} we used the same principle but for the majority of fields we tried to keep the maximum lengths in neat values (normally multiples of 5). For instance, common 
 	values for the maximum length of \textbf{varchar} are 10, 25 and 50. We decided to set each field’s maximum length to the longest realistic input value.
-	For instance, we set \emph{movie\textunderscore title} to \textbf{varchar(100)} as the longest name for a popular movie was 76 characters. We also set \emph{first\textunderscore name} and 
+	For instance, we set \emph{film\textunderscore title} to \textbf{varchar(100)} as the longest name for a popular movie was 76 characters. We also set \emph{first\textunderscore name} and 
 	\emph{last\textunderscore name} to 50 as we thought that would be a good estimate based on actual estimates of the longest person names.
 	\\\\
 	All date values were set to the type \textbf{datetime} according to their date and time content. For instance the \emph{last\textunderscore update} and
@@ -82,5 +82,9 @@
 		\caption{The partially recovered staff photo.}
 	\end{figure}
 	This allowed the picture to be imported, albeit still in an incomplete state. 
+
+\section{Conclusion}
+	At the point of writing, the team determined the database to be sufficient for further usage, due to SELECT queries functioning properly when used to select specific rows in the tables.
+
 
 \end{document}
