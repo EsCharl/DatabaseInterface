@@ -1,6 +1,11 @@
 \documentclass{article}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{bashful}
+
+\bash
+texcount -sum -1 ReportA.tex
+\END
 
 \title{COMP1044 Coursework Assignment 2 Report A}
 \author{
@@ -73,7 +78,7 @@
 	\\\\
 	The other error that we found was that there was a corrupted picture file within \emph{staff.csv}. This corruption it unable to view or display the aforementioned picture. 
 	We decided that having a picture within a staff database was not of high importance and wouldn’t decrease the completeness or understandability of the dataset,
-	so we just removed the picture. A possible solution was making the field type storing the picture a \textbf{longblob}. 
-	This allowed the picture to be imported, albeit in an incomplete state.
+	so we just removed the picture. A possible solution was making the field type storing the picture as \textbf{longblob}. 
+	This allowed the picture to be imported, albeit in an incomplete state. \footnote{This document contains \bashStdout words.}
 
 \end{document}
