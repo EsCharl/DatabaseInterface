@@ -6,13 +6,13 @@
 \author{
 	Leong Chang Yung, 20307078
 	\and
-	Lucas Dylan Purnell, XXXXXXXX
+	Lucas Dylan Purnell, 20197316
 	\and
 	Tan Zhun Xian, 20313854
 	\and
-	Hao Wei, XXXXXXXX
+	Chong Hao Wei, 20194465
 	\and
-	Morhaf, XXXXXXXX
+	Morhaf Allababidi, 20195867
 	\and
 	Thomas Tan Kean Yew, 20316601
 }
@@ -21,11 +21,13 @@
 \begin{document}
 \maketitle
 \newpage
+
 \section{Database Design Diagram}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{DBI CourseworkA}
 		\caption{Proposed model for database.}	
 	\end{figure}
+	\rule{\textwidth}{0.4pt}
 		
 \section{Datatype Selection}
 	For every field we chose the datatype depending on what would both match the data we had available and take up the lowest amount of memory possible 
@@ -42,7 +44,9 @@
 	\emph{last\textunderscore name} to 50 as we thought that would be a good estimate based on actual estimates of the longest person names.
 	\\\\
 	All date values were set to the type \textbf{datetime} according to their date and time content. For instance the \emph{last\textunderscore update} and
-	\emph{create\textunderscore date} fields.
+	\emph{create\textunderscore date} fields.	
+	\\
+	\rule{\textwidth}{0.4pt}
 	
 \section{Reasoning for Primary and Foreign Key Choice}
 	When we were deciding on what to pick for the primary key for each time we understood that it had to be both unique and non-null. 
@@ -53,6 +57,8 @@
 	With the in mind we can use the same fields that we used as primary keys. Therefore for each of our arrays the \emph{id} column is used to link the tables together. 
 	For instance, \emph{customer\textunderscore id} was chosen as the foreign key to link the \emph{payment} table with the \emph{customer} table and \emph{address\textunderscore id} 
 	was chosen as the foreign key to link the \emph{staff} table with the \emph{address} table.
+	\\
+	\rule{\textwidth}{0.4pt}
 
 \section{Completeness of the Dataset}
 	The database was relatively complete and we did not struggle with the quality of the data. We found that the data values were consistent across the different tables. This meant
@@ -68,6 +74,8 @@
 	 of the database, as these \textsc{null} fields will lead to orphaned records due to the lack of a foriegn key.
 	\\\\
 	There was also a \textsc{null} value in the \emph{password} column of the \emph{staff.csv} table. This would indicate data corruption, data loss, or staff negligence in inputting a proper password. In the interest of system security, the best remedy would be to get the relevant staff member to provide a value for this \textsc{null} field. However, while the problem stands, we decided that it would be better to leave these fields as \textsc{null} to avoid risking data integrity.
+	\\
+	\rule{\textwidth}{0.4pt}
 
 \section{Errors in the Database}
 	We also noticed that in \emph{country.csv} and \emph{customer.csv} that there wasn’t a consistent delimiter. The file alternated between using commas 
@@ -82,6 +90,8 @@
 		\caption{The partially recovered staff photo.}
 	\end{figure}
 	This allowed the picture to be imported, albeit still in an incomplete state. 
+	\\
+	\rule{\textwidth}{0.4pt}
 
 \section{Conclusion}
 	At the point of writing, the team determined the database to be sufficient for further usage, due to SELECT queries functioning properly when used to select specific rows in the tables.
