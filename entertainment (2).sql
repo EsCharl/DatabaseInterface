@@ -48660,7 +48660,7 @@ CREATE TABLE `staff` (
   `staff_id` int(1) NOT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  `address_id` int(1) DEFAULT NULL,
+  `address_id` int(3) DEFAULT NULL,
   `picture` longblob DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `store_id` int(1) DEFAULT NULL,
