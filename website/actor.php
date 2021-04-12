@@ -68,8 +68,6 @@ require 'dbconfig\config.php';
                 </center>
             </form>
 
-            
-
             <?php
                 if(isset($_POST['insert_btn']))
                 {
@@ -93,8 +91,61 @@ require 'dbconfig\config.php';
                         }
                     }
                 }
+
+                else if(isset($_POST['update_btn']))
+				{
+					@$actor_id=$_POST['actor_id'];
+                    @$first_name=$_POST['first_name'];
+                    @$last_name=$_POST['last_name'];
+						
+                    if($actor_id != ""){
+                        $query = "select * from actor where actor_id=$actor_id";
+                        $query_run = mysqli_query($con,$query);
+                        if($first_name == "" && $query_run){
+                            $first_name=$row['first_name'];
+                        }
+                        if($last_name == "" && $query_run){
+                            $last_name=$row['last_name'];
+                        }
+                        $query = "update actor SET first_name = '$first_name', last_name='$last_name', last_update='$currentTime' WHERE actor_id=$actor_id";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run)
+						{
+							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error")</script>';
+						}
+                    }
+                    else{
+                        echo '<script type="text/javascript">alert("Please input an Actor ID")</script>';
+                    }
+				}
+				
+				else if(isset($_POST['delete_btn']))
+				{
+					if($_POST['pid']=="")
+					{
+						echo '<script type="text/javascript">alert("Enter an Actor ID to delete product")</script>';
+					}
+				else{
+						$actor_id = $_POST['actor_id'];
+						$query = "delete from actor 
+							WHERE pid=$actor_id";
+						$query_run = mysqli_query($con,$query);
+						if($query_run)
+						{
+							echo '<script type="text/javascript">alert("Product deleted")</script>';
+						}
+						else
+						{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+					}
+				}
             ?>
             
+
         </div>
     </div>
 </body>
