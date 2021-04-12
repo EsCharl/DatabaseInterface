@@ -50,7 +50,7 @@ require 'dbconfig\config.php';
                 }
             ?>
 
-            <form action="index.php" method="post">
+            <form action="actor.php" method="post">
 
                 <label><b>Actor ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Actor ID" name="actor_id" value="<?php echo @$_POST['actor_id'];?>"><br>
