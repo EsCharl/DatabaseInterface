@@ -131,14 +131,14 @@ require 'dbconfig\config.php';
 				
 				else if(isset($_POST['delete_btn']))
 				{
-					if($_POST['pid']=="")
+					if($_POST['actor_id']=="")
 					{
 						echo '<script type="text/javascript">alert("Enter an Actor ID to delete product")</script>';
 					}
 				else{
 						$actor_id = $_POST['actor_id'];
 						$query = "delete from actor 
-							WHERE pid=$actor_id";
+							WHERE actor_id=$actor_id";
 						$query_run = mysqli_query($con,$query);
 						if($query_run)
 						{
