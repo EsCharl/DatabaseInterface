@@ -35,9 +35,9 @@ require 'dbconfig\config.php';
                             if(mysqli_num_rows($query_run)>0)
 							{
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-								@$actor_id=$row['id'];
-								@$first_name=$row['pname'];
-								@$last_name=$row['pbrand'];
+								@$actor_id=$row['actor_id'];
+								@$first_name=$row['first_name'];
+								@$last_name=$row['last_name'];
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
