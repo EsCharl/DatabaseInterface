@@ -101,12 +101,19 @@ require 'dbconfig\config.php';
                     if($actor_id != ""){
                         $query = "select * from actor where actor_id=$actor_id";
                         $query_run = mysqli_query($con,$query);
-                        if($first_name == "" && $query_run){
-                            $first_name=$row['first_name'];
+                        if($query_run){
+                            if(mysqli_num_rows($query_run)>0)
+							{
+								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+							}
+                            if($first_name == ""){
+                                $first_name=$row['first_name'];
+                            }
+                            if($last_name == "" && $query_run){
+                                $last_name=$row['last_name'];
+                            }
                         }
-                        if($last_name == "" && $query_run){
-                            $last_name=$row['last_name'];
-                        }
+                        
                         $query = "update actor SET first_name = '$first_name', last_name='$last_name', last_update='$currentTime' WHERE actor_id=$actor_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run)
@@ -144,8 +151,6 @@ require 'dbconfig\config.php';
 					}
 				}
             ?>
-            
-
         </div>
     </div>
 </body>
