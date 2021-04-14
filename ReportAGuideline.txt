@@ -1,6 +1,0 @@
-why did you choose datatypes - Langkawi
-reasons for connections between tables (primary and foreign key alike) - Langkawi
-what errors in dataset                       } 
-how did you find completeness in the dataset } - Two People Here
-how did you address those errors             } - Scan Errors, Write Report
-
