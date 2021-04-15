@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `district` (
   `district_id` int(11) NOT NULL,
+  `country_id` int(3) NULL,
   `district_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
