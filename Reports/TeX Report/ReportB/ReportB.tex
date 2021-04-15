@@ -268,6 +268,35 @@
 
 	\subsection{Tables Affected by Normalization}
 		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_filmspecialfeatures_norm}
+			\caption{Table "Film\textunderscore Special\textunderscore Features", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_specialfeatures_norm}
+			\caption{Table "Special\textunderscore Features", normalized.}
+		\end{figure}
+
+		The District, City and Address tables have been recompiled after normalization. ////
+		The field last_update is retained for the purpose of easing maintenance of the altered tables. ////
+		It can be noted that for the Address and City tables, many errors within the database have been uncovered due to the use of normalization that otherwise would have gone unnoticed.  Errors found include: 
+		\begin{itemize}
+			\item Cities with ID 121, 493 and 583 not having a listed district. Their district_id fields in the newly reorganized City table have been left blank.
+			\item Entry with city_id 313 in the City table not existing within the address table. district_id field of this city also left blank in the City table.
+			\item Multiple occurences of the same city_id being in multiple districts in the address table. To preserve database integrity after normalization, one of the extra districts is removed with the use of an SQL command containing the GROUP BY keyword. 
+		\end{itemize}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_district_norm}
+			\caption{Table "District", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_address_norm}
+			\caption{Table "Address", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_city_norm}
+			\caption{Table "City", normalized.}
+		\end{figure}
+		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_film_norm}
 			\caption{Table "Film", normalized.}
 		\end{figure}
@@ -283,8 +312,29 @@
 			\includegraphics[width=\textwidth]{table_stafflogin_norm}
 			\caption{Table "Staff\textunderscore Login", newly created after normalization.}
 		\end{figure}
-	
+
+
 	\subsection{Table Structures After Normalization}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_filmspecialfeatures_nstruct}
+			\caption{Structure of table "Film\textunderscore Special\textunderscore Features", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_specialfeatures_nstruct}
+			\caption{Structure of table "Special\textunderscore Features", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_district_nstruct}
+			\caption{Structure of table "District", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_address_nstruct}
+			\caption{Structure of table "Address", normalized.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{table_city_nstruct}
+			\caption{Structure of table "City", normalized.}
+		\end{figure}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_film_nstruct}
 			\caption{Structure of table "Film", normalized.}
@@ -303,6 +353,26 @@
 		\end{figure}
 
 	\subsection{Insertion After Normalization}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{filmspecialfeatures1_insert_norm}
+			\includegraphics[width=\textwidth]{filmspecialfeatures2_insert_norm}
+			\caption{Insertion of new data into the table "Film\textunderscore Special\textunderscore Features" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{specialfeatures1_insert_norm}
+			\includegraphics[width=\textwidth]{specialfeatures2_insert_norm}
+			\caption{Insertion of new data into the table "Special\textunderscore Features" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{district1_insert_norm}
+			\includegraphics[width=\textwidth]{district2_insert_norm}
+			\caption{Insertion of new data into the table "District" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{city1_insert_norm}
+			\includegraphics[width=\textwidth]{city2_insert_norm}
+			\caption{Insertion of new data into the table "City" after normalization}
+		\end{figure}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{staff1_insert_norm}
 			\includegraphics[width=\textwidth]{staff2_insert_norm}
@@ -324,6 +394,12 @@
 			\includegraphics[width=\textwidth]{stafflogin1_delete_norm}
 			\includegraphics[width=\textwidth]{stafflogin2_delete_norm}
 			\caption{Data deletion from the table "Staff\textunderscore Login" after normalization}
+		\end{figure}
+
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{address1_delete_norm}
+			\includegraphics[width=\textwidth]{address2_delete_norm}
+			\caption{Data deletion from the table "Address" after normalization}
 		\end{figure}
 
 	\subsection{Updates After Normalization}
