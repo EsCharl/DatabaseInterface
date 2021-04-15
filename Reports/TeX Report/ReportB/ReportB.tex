@@ -278,12 +278,12 @@
 		\end{figure}
 
 		The District, City and Address tables have been recompiled after normalization. ////
-		The field last_update is retained for the purpose of easing maintenance of the altered tables. ////
+		The field last\textunderscore update is retained for the purpose of easing maintenance of the altered tables. ////
 		It can be noted that for the Address and City tables, many errors within the database have been uncovered due to the use of normalization that otherwise would have gone unnoticed.  Errors found include: 
 		\begin{itemize}
-			\item Cities with ID 121, 493 and 583 not having a listed district. Their district_id fields in the newly reorganized City table have been left blank.
-			\item Entry with city_id 313 in the City table not existing within the address table. district_id field of this city also left blank in the City table.
-			\item Multiple occurences of the same city_id being in multiple districts in the address table. To preserve database integrity after normalization, one of the extra districts is removed with the use of an SQL command containing the GROUP BY keyword. 
+			\item Cities with ID 121, 493 and 583 not having a listed district. Their district\textunderscore id fields in the newly reorganized City table have been left blank.
+			\item Entry with city\textunderscore id 313 in the City table not existing within the address table. district\textunderscore id field of this city also left blank in the City table.
+			\item Multiple occurences of the same city\textunderscore id being in multiple districts in the address table. To preserve database integrity after normalization, one of the extra districts is removed with the use of an SQL command containing the GROUP BY keyword. 
 		\end{itemize}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_district_norm}
@@ -329,14 +329,6 @@
 			\caption{Structure of table "District", normalized.}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{table_address_nstruct}
-			\caption{Structure of table "Address", normalized.}
-		\end{figure}
-		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{table_city_nstruct}
-			\caption{Structure of table "City", normalized.}
-		\end{figure}
-		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_film_nstruct}
 			\caption{Structure of table "Film", normalized.}
 		\end{figure}
@@ -360,7 +352,7 @@
 			\caption{Insertion of new data into the table "Film\textunderscore Special\textunderscore Features" after normalization}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{specialfeatures_insert_norm}
+			\includegraphics[width=\textwidth]{specialfeatures1_insert_norm}
 			\caption{Insertion of new data into the table "Special\textunderscore Features" after normalization}
 		\end{figure}
 		\begin{figure}[H]
