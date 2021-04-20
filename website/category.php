@@ -1,9 +1,8 @@
 <?php
 require 'dbconfig\config.php';
 
-@$film_id="";
-@$title="";
-@$description="";
+@$category_id="";
+@$name="";
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -26,16 +25,13 @@ table, th, td {
 
         <div class="inner_container">
 
-            <form action="film_text.php" method="post">
+            <form action="category.php" method="post">
 
-                <label><b>film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
+                <label><b>Category ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <input type="number" placeholder="Enter category ID" name="category_id" value="<?php echo @$_POST['category_id'];?>"><br>
 
-                <label><b>film Title</b></label><br>
-                <input type="text" placeholder="Enter Title" name="title" value="<?php echo $title; ?>"><br>
-        
-                <label><b>film Description</b></label>
-                <input type="text" placeholder="Enter Description" name="description" value="<?php echo $description; ?>">
+                <label><b>Category Name</b></label>
+                <input type="text" placeholder="Enter First Name" name="name" value="<?php echo $name; ?>"><br>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -47,16 +43,15 @@ table, th, td {
             <?php
                 if(isset($_POST['insert_btn']))
                 {
-                    @$film_id=$_POST['film_id'];
-                    @$title=$_POST['title'];
-                    @$description=$_POST['description'];
+                    @$category_id=$_POST['category_id'];
+                    @$name=$_POST['name'];
 
-                    if($film_id=="" || $title=="" || $description=="")
+                    if($category_id=="" || $name=="")
                     {
                         echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
                     }
                     else{
-                        $query = "insert into film_text values ('$film_id','$title','$description')";
+                        $query = "insert into category values ('$category_id','$name','$currentTime')";
                         $query_run=mysqli_query($con,$query);
                         if($query_run)
                         {
@@ -70,27 +65,23 @@ table, th, td {
 
                 else if(isset($_POST['update_btn']))
 				{
-					@$film_id=$_POST['film_id'];
-                    @$title=$_POST['title'];
-                    @$description=$_POST['description'];
+					@$category_id=$_POST['category_id'];
+                    @$name=$_POST['name'];
 						
-                    if($film_id != ""){
-                        $query = "select * from film_text where film_id=$film_id";
+                    if($category_id != ""){
+                        $query = "select * from category where category_id=$category_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             if(mysqli_num_rows($query_run)>0)
 							{
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
 							}
-                            if($title == ""){
-                                $title=$row['title'];
-                            }
-                            if($description == "" && $query_run){
-                                $description=$row['description'];
+                            if($name == ""){
+                                $name=$row['name'];
                             }
                         }
                         
-                        $query = "update film_text SET title = '$title', description='$description' WHERE film_id=$film_id";
+                        $query = "update category SET name = '$name', last_update='$currentTime' WHERE category_id=$category_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run)
 						{
@@ -101,20 +92,20 @@ table, th, td {
 						}
                     }
                     else{
-                        echo '<script type="text/javascript">alert("Please input an film ID")</script>';
+                        echo '<script type="text/javascript">alert("Please input an category ID")</script>';
                     }
 				}
 				
 				else if(isset($_POST['delete_btn']))
 				{
-					if($_POST['film_id']=="")
+					if($_POST['category_id']=="")
 					{
-						echo '<script type="text/javascript">alert("Enter an film ID to delete product")</script>';
+						echo '<script type="text/javascript">alert("Enter an category ID to delete product")</script>';
 					}
 				else{
-						$film_id = $_POST['film_id'];
-						$query = "delete from film_text 
-							WHERE film_id=$film_id";
+						$category_id = $_POST['category_id'];
+						$query = "delete from category 
+							WHERE category_id=$category_id";
 						$query_run = mysqli_query($con,$query);
 						if($query_run)
 						{
@@ -131,13 +122,13 @@ table, th, td {
             <?php
                 if(isset($_POST['fetch_btn'])){
 
-                    $film_id = $_POST['film_id'];
+                    $category_id = $_POST['category_id'];
 
-                    if($film_id==""){
-                        echo '<script type="text/javascript">alert("Enter film_id to get data")</script>';
+                    if($category_id==""){
+                        echo '<script type="text/javascript">alert("Enter category_id to get data")</script>';
                     }
                     else{
-                        $query = "select * from film_text where film_id=$film_id";
+                        $query = "select * from category where category_id=$category_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -145,21 +136,20 @@ table, th, td {
                                 <table class="w3-table_all">
                                 <tread>
                                 <tr class="w3-light-grey">
-                                <th>Film ID</th>
-                                <th>Title</th>
-                                <th>Description</th>
+                                <th>Category ID</th>
+                                <th>Category Name</th>
+                                <th>Last Update</th>
                                 </tr>
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-                                $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["film_id"] . '</td><td>' . $row["title"] . '</td><td>' . $row["description"] . '</td><td>';
-                                //@$film_id=$row['film_id'];
-                                //@$title=$row['title'];
-                                //@$description=$row['description'];
+								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["category_id"] . '</td><td>' . $row["name"] . '</td><td>' . $row["last_update"] . '</td><td>';
+								//@$category_id=$row['category_id'];
+								//@$name=$row['name'];
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid film ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid category ID")</script>';
 							}
 						}
 						else{

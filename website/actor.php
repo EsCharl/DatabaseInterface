@@ -4,8 +4,8 @@ require 'dbconfig\config.php';
 @$actor_id="";
 @$first_name="";
 @$last_name="";
-                    $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
-                    echo $currentTime;
+$currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
+echo $currentTime;
 ?>
 
 <!DOCTYPE html>
