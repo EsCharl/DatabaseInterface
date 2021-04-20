@@ -31,14 +31,8 @@ table, th, td {
                 <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
 
-                <label><b>Category ID</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+                <label><b>Category ID (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Category ID" name="category_id" value="<?php echo @$_POST['category_id']; ?>"><br>
-
-                <label><b>Category ID (change to)</b> </label>
-                <input type="number" placeholder="Enter Film ID" name="filmC_id" value="<?php echo @$_POST['filmC_id'];?>"><br>
-
-                <label><b>Category ID (change to)</b></label>
-                <input type="number" placeholder="Enter Category ID" name="categoryC_id" value="<?php echo @$_POST['categoryC_id']; ?>"><br>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -74,18 +68,10 @@ table, th, td {
 				{
 					@$film_id=$_POST['film_id'];
                     @$category_id=$_POST['category_id'];
-                    @$filmC_id=$_POST['filmC_id'];
-					@$categoryC_id=$_POST['categoryC_id'];
 						
-                    if($film_id != "" || $category_id != ""){
-                        if($categoryC_id == ""){
-                            $categoryC_id = $category_id;
-                        }
-                        if($filmC_id == ""){
-                            $filmC_id = $film_id;
-                        }
+                    if($film_id != "" && $category_id != ""){
 
-                        $query = "update film_category SET category_id = $categoryC_id, film_id = $filmC_id, last_update = '$currentTime' WHERE film_id=$film_id && category_id=$category_id";
+                        $query = "update film_category SET category_id = $category_id, last_update = '$currentTime' WHERE film_id=$film_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
