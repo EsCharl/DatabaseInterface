@@ -31,10 +31,10 @@ table, th, td {
                 <label><b>film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
 
-                <label><b>film Title</b></label><br>
+                <label><b>Film Title (insert or search or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Title" name="title" value="<?php echo $title; ?>"><br>
         
-                <label><b>film Description</b></label>
+                <label><b>film Description (insert or change to)</b></label>
                 <input type="text" placeholder="Enter Description" name="description" value="<?php echo $description; ?>">
 
                 <center>
@@ -160,6 +160,44 @@ table, th, td {
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid film ID")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+                else if(isset($_POST['fetch1_btn'])){
+
+                    $title = $_POST['title'];
+
+                    if($title==""){
+                        echo '<script type="text/javascript">alert("Enter title to get data")</script>';
+                    }
+                    else{
+                        $query = "select * from film_text where title='$title'";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Film ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+                                $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["film_id"] . '</td><td>' . $row["title"] . '</td><td>' . $row["description"] . '</td><td>';
+                                //@$film_id=$row['film_id'];
+                                //@$title=$row['title'];
+                                //@$description=$row['description'];
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Title Name")</script>';
 							}
 						}
 						else{

@@ -30,7 +30,7 @@ table, th, td {
                 <label><b>Category ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter category ID" name="category_id" value="<?php echo @$_POST['category_id'];?>"><br>
 
-                <label><b>Category Name</b></label>
+                <label><b>Category Name (insert or change to)</b></label>
                 <input type="text" placeholder="Enter Category Name" name="name" value="<?php echo $name; ?>"><br>
 
                 <center>

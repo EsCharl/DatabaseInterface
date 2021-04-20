@@ -3,6 +3,7 @@ require 'dbconfig\config.php';
 
 @$film_id="";
 @$special_features="";
+$special_featuresC="";
 @$loops=0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
@@ -28,11 +29,14 @@ table, th, td {
 
             <form action="film_special_features.php" method="post">
 
-                <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <label><b>Film ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
 
-                <label><b>Film Special Features</b></label>
+                <label><b>Film Special Features (insert or delete specific)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Film Special Features" name="special_features" value="<?php echo $special_features; ?>"><br>
+
+                <label><b>Film Special Features (change to)</b></label>
+                <input type="text" placeholder="Enter Film Special Features" name="special_featuresC" value="<?php echo $special_featuresC; ?>"><br>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -68,6 +72,7 @@ table, th, td {
 				{
 					@$film_id=$_POST['film_id'];
                     @$special_features=$_POST['special_features'];
+                    @$special_featuresC=$_POST['special_featuresC'];
 						
                     if($film_id != ""){
                         $query = "select * from film_special_features where film_id=$film_id";
@@ -80,9 +85,12 @@ table, th, td {
                             if($special_features == ""){
                                 $special_features=$row['special_features'];
                             }
+                            if($special_featuresC == ""){
+                                $special_featuresC=$special_features;
+                            }
                         }
                         
-                        $query = "update film_special_features SET special_features = '$special_features', last_update='$currentTime' WHERE film_id=$film_id";
+                        $query = "update film_special_features SET special_features = '$special_featuresC', last_update='$currentTime' WHERE film_id=$film_id && special_features='$special_features'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run)
 						{
@@ -99,14 +107,20 @@ table, th, td {
 				
 				else if(isset($_POST['delete_btn']))
 				{
-					if($_POST['film_id']=="")
+					if($_POST['film_id']=="" && $_POST['special_features']=="")
 					{
-						echo '<script type="text/javascript">alert("Enter an Film ID to delete product")</script>';
+						echo '<script type="text/javascript">alert("Enter a Film ID or/and special_features to delete product")</script>';
 					}
 				else{
 						$film_id = $_POST['film_id'];
-						$query = "delete from film_special_features 
-							WHERE film_id=$film_id";
+                        $special_features = $_POST['special_features'];
+                        if($film_id == ""){
+                            $query = "delete from film_special_features WHERE special_features='$special_features'";
+                        }else if($special_features == ""){
+                            $query = "delete from film_special_features WHERE film_id=$film_id";
+                        }else{
+						    $query = "delete from film_special_features WHERE film_id=$film_id && special_features='$special_features'";
+                        }
 						$query_run = mysqli_query($con,$query);
 						if($query_run)
 						{
@@ -142,7 +156,6 @@ table, th, td {
                                 <th>Last Update</th>
                                 </tr>
                                 </tread>';
-                            echo mysqli_num_rows($query_run);
                             if(mysqli_num_rows($query_run)>0)
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
@@ -153,6 +166,45 @@ table, th, td {
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Film ID")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+
+                else if(isset($_POST['fetch1_btn'])){
+
+                    $special_features = $_POST['special_features'];
+
+                    if($special_features==""){
+                        echo '<script type="text/javascript">alert("Enter Special Features to get data")</script>';
+                    }
+                    else{
+                        $query = "select * from film_special_features where special_features='$special_features'";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Film ID</th>
+                                <th>Film Special Feature</th>
+                                <th>Last Update</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+                                while (mysqli_num_rows($query_run) != $loops){
+								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["film_id"] . '</td><td>' . $row["special_features"] . '</td><td>' . $row["last_update"] . '</td><td>';
+                                $loops++;
+                                }
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Special Features")</script>';
 							}
 						}
 						else{

@@ -31,10 +31,10 @@ table, th, td {
                 <label><b>Actor ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Actor ID" name="actor_id" value="<?php echo @$_POST['actor_id'];?>"><br>
 
-                <label><b>Actor First Name</b></label>
+                <label><b>Actor First Name (insert or search or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter First Name" name="first_name" value="<?php echo $first_name; ?>"><br>
         
-                <label><b>Actor Last Name</b></label>
+                <label><b>Actor Last Name (insert or search or change to)</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Last Name" name="last_name" value="<?php echo $last_name; ?>">
 
                 <center>
@@ -138,6 +138,84 @@ table, th, td {
                     }
                     else{
                         $query = "select * from actor where actor_id=$actor_id";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Actor ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Last Update</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["actor_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["last_update"] . '</td><td>';
+								//@$actor_id=$row['actor_id'];
+								//@$first_name=$row['first_name'];
+								//@$last_name=$row['last_name'];
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+                else if(isset($_POST['fetch1_btn'])){
+
+                    $first_name = $_POST['first_name'];
+
+                    if($first_name==""){
+                        echo '<script type="text/javascript">alert("Enter Actor First Name to get data")</script>';
+                    }
+                    else{
+                        $query = "select * from actor where first_name='$first_name'";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Actor ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Last Update</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["actor_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["last_update"] . '</td><td>';
+								//@$actor_id=$row['actor_id'];
+								//@$first_name=$row['first_name'];
+								//@$last_name=$row['last_name'];
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+                else if(isset($_POST['fetch2_btn'])){
+
+                    $last_name = $_POST['last_name'];
+
+                    if($last_name==""){
+                        echo '<script type="text/javascript">alert("Enter Actor Last Name to get data")</script>';
+                    }
+                    else{
+                        $query = "select * from actor where last_name='$last_name'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
