@@ -30,7 +30,7 @@ table, th, td {
                 <label><b>Language ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Language ID" name="language_id" value="<?php echo @$_POST['language_id'];?>"><br>
 
-                <label><b>Language Name</b></label>
+                <label><b>Language Name (insert or change to)</b></label>
                 <input type="text" placeholder="Enter Language Name" name="name" value="<?php echo $name; ?>"><br>
 
                 <center>
