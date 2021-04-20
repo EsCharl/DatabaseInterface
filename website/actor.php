@@ -22,7 +22,7 @@ table, th, td {
 </head>
 <body style="background-color:#bdc3c7">
     <div id="main-wrapper">
-        <center><h2>Select / Insert / Update/ Delete</h2></center>
+        <center><h2>Actor (Select / Insert / Update/ Delete)</h2></center>
 
         <div class="inner_container">
 
