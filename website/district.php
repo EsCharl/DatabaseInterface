@@ -3,7 +3,7 @@ require 'dbconfig\config.php';
 
 @$district_id="";
 @$district="";
-$districtC="";
+@$country_id="";
 @$loops=0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
@@ -30,10 +30,10 @@ table, th, td {
             <form action="district.php" method="post">
 
                 <label><b>District ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter District ID" name="district_id" value="<?php echo @$_POST['district_id'];?>"><br>
+                <input type="number" placeholder="Enter District ID" name="district_id" value="<?php echo $district_id;?>"><br>
 
                 <label><b>Country ID (insert or delete)</b> </label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Country ID" name="country_id" value="<?php echo @$_POST['country_id'];?>"><br>
+                <input type="number" placeholder="Enter Country ID" name="country_id" value="<?php echo $country_id;?>"><br>
 
                 <label><b>District (insert or delete specific)</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter District Name" name="district" value="<?php echo $district; ?>"><br>

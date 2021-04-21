@@ -30,7 +30,7 @@ table, th, td {
             <form action="film_special_features.php" method="post">
 
                 <label><b>Film ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
+                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
                 <label><b>Film Special Features (insert or delete specific)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Film Special Features" name="special_features" value="<?php echo $special_features; ?>"><br>

@@ -29,10 +29,10 @@ table, th, td {
             <form action="film_category.php" method="post">
 
                 <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
+                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
                 <label><b>Category ID (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Category ID" name="category_id" value="<?php echo @$_POST['category_id']; ?>"><br>
+                <input type="number" placeholder="Enter Category ID" name="category_id" value="<?php echo $category_id; ?>"><br>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>

@@ -31,7 +31,7 @@ table, th, td {
             <form action="film_rental.php" method="post">
 
                 <label><b>Film ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
+                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
                 <label><b>Film Duration (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Rental Duration" name="rental_duration" value="<?php echo $rental_duration; ?>"><br>

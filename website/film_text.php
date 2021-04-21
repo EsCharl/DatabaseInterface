@@ -29,7 +29,7 @@ table, th, td {
             <form action="film_text.php" method="post">
 
                 <label><b>film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter film ID" name="film_id" value="<?php echo @$_POST['film_id'];?>"><br>
+                <input type="number" placeholder="Enter film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
                 <label><b>Film Title (insert or search or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Title" name="title" value="<?php echo $title; ?>"><br>

@@ -28,7 +28,7 @@ table, th, td {
             <form action="category.php" method="post">
 
                 <label><b>Category ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter category ID" name="category_id" value="<?php echo @$_POST['category_id'];?>"><br>
+                <input type="number" placeholder="Enter category ID" name="category_id" value="<?php echo $category_id;?>"><br>
 
                 <label><b>Category Name (insert or change to)</b></label>
                 <input type="text" placeholder="Enter Category Name" name="name" value="<?php echo $name; ?>"><br>

@@ -28,7 +28,7 @@ table, th, td {
             <form action="country.php" method="post">
 
                 <label><b>Country ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Country ID" name="country_id" value="<?php echo @$_POST['country_id'];?>"><br>
+                <input type="number" placeholder="Enter Country ID" name="country_id" value="<?php echo $country_id;?>"><br>
 
                 <label><b>Country Country (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Country Name" name="country" value="<?php echo $country; ?>"><br>

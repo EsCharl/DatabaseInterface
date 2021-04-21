@@ -29,16 +29,16 @@ table, th, td {
             <form action="film_actor.php" method="post">
 
                 <label><b>Actor ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Actor ID" name="actor_id" value="<?php echo @$_POST['actor_id'];?>"><br>
+                <input type="number" placeholder="Enter Actor ID" name="actor_id" value="<?php echo $actor_id;?>"><br>
 
                 <label><b>Film ID</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo @$_POST['film_id']; ?>"><br>
+                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id; ?>"><br>
 
                 <label><b>Actor ID (change to)</b> </label>
-                <input type="number" placeholder="Enter Actor ID" name="actorC_id" value="<?php echo @$_POST['actorC_id'];?>"><br>
+                <input type="number" placeholder="Enter Actor ID" name="actorC_id" value="<?php echo $actorC_id;?>"><br>
 
                 <label><b>Film ID (change to)</b></label>
-                <input type="number" placeholder="Enter Film ID" name="filmC_id" value="<?php echo @$_POST['filmC_id']; ?>"><br>
+                <input type="number" placeholder="Enter Film ID" name="filmC_id" value="<?php echo $filmC_id; ?>"><br>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
