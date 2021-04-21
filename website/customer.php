@@ -10,6 +10,7 @@ require 'dbconfig\config.php';
 @$email="";
 @$store_id="";
 @$active="";
+@$create_date="";
 @$loops = 0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
@@ -56,6 +57,9 @@ table, th, td {
                 <label><b>Active (insert / change to)</b> </label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter 1 for Active, 0 for Non-active" name="active" value="<?php echo $active;?>"><br>
 
+                <label><b>Create Date (date and time)</b></label><button id="btn_go" name="fetch7_btn" type="submit">Go</button>
+                <input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="create_date" value="<?php echo $create_date;?>">
+
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
                     <button id="btn_update" name="update_btn" type="submit">Update</button>
@@ -73,6 +77,7 @@ table, th, td {
                     @$email=$_POST['email'];
                     @$active=$_POST['active'];
                     @$store_id=$_POST['store_id'];
+                    @$create_date=$_POST['create_date'];
 
                     if($customer_id=="" || $last_name=="" || $store_id=="" || $email=="" || $first_name=="" || $active == "" || $address_id == "")
                     {
@@ -82,7 +87,7 @@ table, th, td {
                         if($address_id == "0"){
                             $address_id="NULL";
                         }
-                        $query = "insert into customer values ($customer_id,$store_id,'$first_name','$last_name','$email',$address_id,$active,'$currentTime','$currentTime')";
+                        $query = "insert into customer values ($customer_id,$store_id,'$first_name','$last_name','$email',$address_id,$active,'$create_date','$currentTime')";
                         $query_run=mysqli_query($con,$query);
                         if($query_run)
                         {
@@ -103,6 +108,7 @@ table, th, td {
                     @$email=$_POST['email'];
                     @$active=$_POST['active'];
                     @$store_id=$_POST['store_id'];
+                    @$create_date=$_POST['create_date'];
 						
                     if($customer_id != ""){
                         $query = "select * from customer where customer_id=$customer_id";
@@ -123,6 +129,9 @@ table, th, td {
                             }else if($address_id == "0"){
                                 $address_id="NULL";
                             }
+                            if(empty($address_id)){
+                                $address_id="NULL";
+                            }
                             if($email == ""){
                                 $email=$row['email'];
                             }
@@ -134,9 +143,12 @@ table, th, td {
                             }else if($store_id == "0"){
                                 $store_id="NULL";
                             }
+                            if($create_date == ""){
+                                $create_date=$row['create_date'];
+                            }
                         }
 
-                        $query = "UPDATE `customer` SET `first_name`='$first_name',`last_name`='$last_name',`address_id`=$address_id,`email`='$email',`last_update`='$currentTime',active=$active,store_id=$store_id WHERE `customer_id`=$customer_id";
+                        $query = "UPDATE `customer` SET `first_name`='$first_name',`last_name`='$last_name',`address_id`=$address_id,`email`='$email',`last_update`='$currentTime',active=$active,store_id=$store_id,create_date='$create_date' WHERE `customer_id`=$customer_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
@@ -463,6 +475,51 @@ table, th, td {
                     }
                     else{
                         $query = "select * from customer where active=$active";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Customer ID</th>
+                                <th>Store ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Address ID</th>
+                                <th>Active</th>
+                                <th>Create Date</th>
+                                <th>Last Update</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+                                while (mysqli_num_rows($query_run) != $loops){
+                                $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["customer_id"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["email"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["create_date"] . '</td><td>' . $row["last_update"] . '</td><td>';
+                                $loops++;
+                                }
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Input")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+
+                if(isset($_POST['fetch7_btn'])){
+
+                    $create_date = $_POST['create_date'];
+
+                    if($create_date==""){
+                        echo '<script type="text/javascript">alert("Enter the date")</script>';
+                    }
+                    else{
+                        $query = "select * from customer where create_date=$create_date";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
