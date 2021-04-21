@@ -82,7 +82,15 @@ table, th, td {
                         if($postal_code == "0"){
                             $postal_code='NULL';
                         }
-                        $query = "insert into address values ($address_id,'$address','$address2',$city_id,$postal_code,'$phone','$currentTime')";
+                        if(empty($phone) && empty($address2)){
+                            $query = "insert into address values ($address_id,'$address',NULL,$city_id,$postal_code,NULL,'$currentTime')";
+                        }else if(empty($phone)){
+                            $query = "insert into address values ($address_id,'$address','$address2',$city_id,$postal_code,NULL,'$currentTime')";
+                        }else if(empty($address2)){
+                            $query = "insert into address values ($address_id,'$address',NULL,$city_id,$postal_code,'$phone','$currentTime')";
+                        }else{
+                            $query = "insert into address values ($address_id,'$address','$address2',$city_id,$postal_code,'$phone','$currentTime')";
+                        }
                         $query_run=mysqli_query($con,$query);
                         if($query_run)
                         {
@@ -140,8 +148,15 @@ table, th, td {
 								$postal_code='NULL';
 							}	
                         }
-
-                        $query = "UPDATE `address` SET `address`='$address',`city_id`=$city_id,`postal_code`=$postal_code,`phone`='$phone',`address2`='$address2',`last_update`='$currentTime' WHERE `address_id`=$address_id";
+                        if(empty($phone) && empty($address2)){
+                            $query = "UPDATE `address` SET `address`='$address',`city_id`=$city_id,`postal_code`=$postal_code,`phone`=NULL,`address2`=NULL,`last_update`='$currentTime' WHERE `address_id`=$address_id";
+                        }else if(empty($phone)){
+                            $query = "UPDATE `address` SET `address`='$address',`city_id`=$city_id,`postal_code`=$postal_code,`phone`=NULL,`address2`='$address2',`last_update`='$currentTime' WHERE `address_id`=$address_id";
+                        }else if(empty($address2)){
+                            $query = "UPDATE `address` SET `address`='$address',`city_id`=$city_id,`postal_code`=$postal_code,`phone`=NULL,`address2`=NULL,`last_update`='$currentTime' WHERE `address_id`=$address_id";
+                        }else{
+                            $query = "UPDATE `address` SET `address`='$address',`city_id`=$city_id,`postal_code`=$postal_code,`phone`='$phone',`address2`='$address2',`last_update`='$currentTime' WHERE `address_id`=$address_id";
+                        }
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
@@ -367,8 +382,7 @@ table, th, td {
                     }
                     else{
                         if($phone == "-"){
-                            $phone=NULL;
-                            $query = "select * from address where phone IS '$phone'";
+                            $query = "select * from address where phone IS NULL";
                         }else{
                             $query = "select * from address where phone='$phone'";
                         }
@@ -414,7 +428,11 @@ table, th, td {
                         echo '<script type="text/javascript">alert("Enter Address2 to get data")</script>';
                     }
                     else{
-                        $query = "select * from address where address2='$address2'";
+                        if($address2 == "-"){
+                            $query = "select * from address where address2 IS NULL";
+                        }else{
+                            $query = "select * from address where address2='$address2'";
+                        }
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
