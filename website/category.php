@@ -3,6 +3,7 @@ require 'dbconfig\config.php';
 
 @$category_id="";
 @$name="";
+@$loops=0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -30,7 +31,7 @@ table, th, td {
                 <label><b>Category ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter category ID" name="category_id" value="<?php echo $category_id;?>"><br>
 
-                <label><b>Category Name (insert or change to)</b></label>
+                <label><b>Category Name (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Category Name" name="name" value="<?php echo $name; ?>"><br>
 
                 <center>
@@ -143,13 +144,53 @@ table, th, td {
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
+                                while (mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
                                 echo '<tr><td>', $row["category_id"] . '</td><td>' . $row["name"] . '</td><td>' . $row["last_update"] . '</td><td>';
-								//@$category_id=$row['category_id'];
-								//@$name=$row['name'];
+                                $loops++;
+								}
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid category ID")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+
+                else if(isset($_POST['fetch1_btn'])){
+
+                    $name = $_POST['name'];
+
+                    if($name==""){
+                        echo '<script type="text/javascript">alert("Enter Category Name to get data")</script>';
+                    }
+                    else{
+                        $query = "select * from category where name='$name'";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Category ID</th>
+                                <th>Category Name</th>
+                                <th>Last Update</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+                                while (mysqli_num_rows($query_run) != $loops){
+								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+                                echo '<tr><td>', $row["category_id"] . '</td><td>' . $row["name"] . '</td><td>' . $row["last_update"] . '</td><td>';
+                                $loops++;
+								}
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Category Name")</script>';
 							}
 						}
 						else{

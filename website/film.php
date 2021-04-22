@@ -168,7 +168,7 @@ table, th, td {
                     $film_id = $_POST['film_id'];
 
                     if($film_id==""){
-                        echo '<script type="text/javascript">alert("Enter film_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Film ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film where film_id=$film_id";
@@ -254,7 +254,7 @@ table, th, td {
                     $language_id = $_POST['language_id'];
 
                     if($language_id==""){
-                        echo '<script type="text/javascript">alert("Enter language_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Language ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film where language_id=$language_id";

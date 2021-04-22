@@ -3,7 +3,7 @@ require 'dbconfig\config.php';
 
 @$film_id="";
 @$special_features="";
-$special_featuresC="";
+@$special_featuresC="";
 @$loops=0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
@@ -29,14 +29,14 @@ table, th, td {
 
             <form action="film_special_features.php" method="post">
 
-                <label><b>Film ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
                 <label><b>Film Special Features (insert or delete specific)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Film Special Features" name="special_features" value="<?php echo $special_features; ?>"><br>
 
                 <label><b>Film Special Features (change to)</b></label>
-                <input type="text" placeholder="Enter Film Special Features" name="special_featuresC" value="<?php echo $special_featuresC; ?>"><br>
+                <input type="text" placeholder="Enter Film Special Features that is used to change to" name="special_featuresC" value="<?php echo $special_featuresC; ?>"><br>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -53,7 +53,7 @@ table, th, td {
 
                     if($film_id=="" || $special_features=="")
                     {
-                        echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
+                        echo '<script type="text/javascript">alert("Insert values in Film ID and Film Special Features")</script>';
                     }
                     else{
                         $query = "insert into film_special_features values ('$film_id','$special_features','$currentTime')";
@@ -140,7 +140,7 @@ table, th, td {
                     $film_id = $_POST['film_id'];
 
                     if($film_id==""){
-                        echo '<script type="text/javascript">alert("Enter film_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Film ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film_special_features where film_id=$film_id";

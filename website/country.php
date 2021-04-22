@@ -125,7 +125,7 @@ table, th, td {
                     $country_id = $_POST['country_id'];
 
                     if($country_id==""){
-                        echo '<script type="text/javascript">alert("Enter country_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Country ID to get data")</script>';
                     }
                     else{
                         $query = "select * from country where country_id=$country_id";

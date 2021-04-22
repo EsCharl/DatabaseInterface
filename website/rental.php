@@ -3,7 +3,6 @@ require 'dbconfig\config.php';
 
 @$customer_id="";
 @$rental_id="";
-@$rental_date="";
 @$inventory_id="";
 @$staff_id="";
 @$rental_date="";
@@ -36,7 +35,7 @@ table, th, td {
                 <label><b>Rental ID</b> </label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Rental ID" name="rental_id" value="<?php echo $rental_id;?>"><br>
                 
-                <label><b>Rental Date (date and time)</b></label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
+                <label><b>Rental Date (blank for current date&time (insert))</b></label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="rental_date" value="<?php echo $rental_date;?>">
 
                 <label><b>Inventory ID (insert / change to)</b> </label><button id="btn_go" name="fetch4_btn" type="submit">Go</button>
@@ -45,7 +44,7 @@ table, th, td {
                 <label><b>Customer ID (insert / delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Customer ID" name="customer_id" value="<?php echo $customer_id;?>"><br>
 
-                <label><b>Return Date (blank for current date and time (insert))</b></label><button id="btn_go" name="fetch7_btn" type="submit">Go</button>
+                <label><b>Return Date (blank for current D&T (ONLY update), - for NULL)</b></label><button id="btn_go" name="fetch7_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="return_date" value="<?php echo $return_date;?>"><br>
 
                 <label><b>Staff ID (insert / change to)</b> </label><button id="btn_go" name="fetch5_btn" type="submit">Go</button>
@@ -68,13 +67,15 @@ table, th, td {
                     @$inventory_id=$_POST['inventory_id'];
                     @$return_date=$_POST['return_date'];
 
-                    if($customer_id=="" || $inventory_id=="" || $staff_id=="" || $rental_date == "" || $rental_id == "")
+                    if($customer_id=="" || $inventory_id=="" || $staff_id==""  || $rental_id == "" || $return_date == "")
                     {
                         echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
                     }
                     else{
-                        if(empty($return_date)){
-                            $query = "insert into rental values ($rental_id,'$rental_date',$inventory_id,$customer_id,'$currentTime',$staff_id,'$currentTime')";
+                        if(empty($rental_date) && $return_date == "-"){
+                            $query = "insert into rental values ($rental_id,'$currentTime',$inventory_id,$customer_id,NULL,$staff_id,'$currentTime')";
+                        }else if ($return_date == "-"){
+                            $query = "insert into rental values ($rental_id,'$rental_date',$inventory_id,$customer_id,NULL,$staff_id,'$currentTime')";
                         }else{
                             $query = "insert into rental values ($rental_id,'$rental_date',$inventory_id,$customer_id,'$return_date',$staff_id,'$currentTime')";
                         }
@@ -118,12 +119,19 @@ table, th, td {
                             if($customer_id == ""){
                                 $customer_id=$row['customer_id'];
                             }
-                            if($rental_date == ""){
-                                $rental_date=$row['rental_date'];
+                            if($return_date == ""){
+                                $return_date=$currentTime;
+                            }
+                            if($return_date == "-"){
+                                $return_date = NULL;
                             }
                         }
 
-                        $query = "UPDATE `rental` SET `customer_id`=$customer_id,`staff_id`='$staff_id',`last_update`='$currentTime',rental_date='$rental_date',inventory_id=$inventory_id WHERE `rental_id`=$rental_id";
+                        if(empty($return_date)){
+                            $query = "UPDATE `rental` SET `customer_id`=$customer_id,`staff_id`='$staff_id',`last_update`='$currentTime',rental_date='$rental_date',inventory_id=$inventory_id, return_date = NULL WHERE `rental_id`=$rental_id";
+                        }else{
+                            $query = "UPDATE `rental` SET `customer_id`=$customer_id,`staff_id`='$staff_id',`last_update`='$currentTime',rental_date='$rental_date',inventory_id=$inventory_id, return_date='$return_date' WHERE `rental_id`=$rental_id";
+                        }
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
@@ -195,7 +203,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid payment ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Customer ID")</script>';
 							}
 						}
 						else{
@@ -209,7 +217,7 @@ table, th, td {
                     $rental_id = $_POST['rental_id'];
 
                     if($rental_id==""){
-                        echo '<script type="text/javascript">alert("Enter Address ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Rental ID to get data")</script>';
                     }
                     else{
                         if($rental_id == "0"){
@@ -243,7 +251,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Address ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Rental ID")</script>';
 							}
 						}
 						else{
@@ -286,7 +294,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Email")</script>';
+								echo '<script type="text/javascript">alert("Invalid Staff ID")</script>';
 							}
 						}
 						else{
@@ -300,7 +308,7 @@ table, th, td {
                     $inventory_id = $_POST['inventory_id'];
 
                     if($inventory_id==""){
-                        echo '<script type="text/javascript">alert("Enter Store ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Inventory ID to get data")</script>';
                     }
                     else{
                         $query = "select * from rental where inventory_id=$inventory_id";
@@ -343,7 +351,7 @@ table, th, td {
                     $rental_date = $_POST['rental_date'];
 
                     if($rental_date==""){
-                        echo '<script type="text/javascript">alert("Enter 0 or 1 to get staff that are active or non-active respectively")</script>';
+                        echo '<script type="text/javascript">alert("Enter Rental Date for data")</script>';
                     }
                     else{
                         $query = "select * from rental where rental_date='$rental_date'";
@@ -386,7 +394,7 @@ table, th, td {
                     $return_date = $_POST['return_date'];
 
                     if($return_date==""){
-                        echo '<script type="text/javascript">alert("Enter the date")</script>';
+                        echo '<script type="text/javascript">alert("Enter the Return Date for data")</script>';
                     }
                     else{
                         $query = "select * from rental where return_date='$return_date'";

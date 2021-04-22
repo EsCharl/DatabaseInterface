@@ -30,13 +30,13 @@ table, th, td {
 
             <form action="film_rental.php" method="post">
 
-                <label><b>Film ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
-                <label><b>Film Duration (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+                <label><b>Rental Duration (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Rental Duration" name="rental_duration" value="<?php echo $rental_duration; ?>"><br>
 
-                <label><b>Film Rate (insert or change to)</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+                <label><b>Rental Rate (insert or change to)</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
                 <input type="number" step="0.01" placeholder="Enter Rental Rate" name="rental_rate" value="<?php echo $rental_rate; ?>"><br>
                     
                 <label><b>Replacement Cost (insert or change to)</b></label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>

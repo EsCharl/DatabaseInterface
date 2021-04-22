@@ -101,7 +101,7 @@ table, th, td {
 						}
                     }
                     else{
-                        echo '<script type="text/javascript">alert("Please input a film ID")</script>';
+                        echo '<script type="text/javascript">alert("Please input a Film ID")</script>';
                     }
 				}
 				
@@ -137,7 +137,7 @@ table, th, td {
                     $inventory_id = $_POST['inventory_id'];
 
                     if($inventory_id==""){
-                        echo '<script type="text/javascript">alert("Enter inventory_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Inventory ID to get data")</script>';
                     }
                     else{
                         $query = "select * from inventory where inventory_id=$inventory_id";
