@@ -28,8 +28,8 @@ table, th, td {
 
             <form action="film_text.php" method="post">
 
-                <label><b>film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter film ID" name="film_id" value="<?php echo $film_id;?>"><br>
+                <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
                 <label><b>Film Title (insert or search or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Title" name="title" value="<?php echo $title; ?>"><br>
@@ -101,7 +101,7 @@ table, th, td {
 						}
                     }
                     else{
-                        echo '<script type="text/javascript">alert("Please input an film ID")</script>';
+                        echo '<script type="text/javascript">alert("Please input an Film ID")</script>';
                     }
 				}
 				
@@ -109,7 +109,7 @@ table, th, td {
 				{
 					if($_POST['film_id']=="")
 					{
-						echo '<script type="text/javascript">alert("Enter an film ID to delete product")</script>';
+						echo '<script type="text/javascript">alert("Enter an Film ID to delete product")</script>';
 					}
 				else{
 						$film_id = $_POST['film_id'];

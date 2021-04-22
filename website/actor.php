@@ -4,6 +4,7 @@ require 'dbconfig\config.php';
 @$actor_id="";
 @$first_name="";
 @$last_name="";
+@$loops = 0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -153,11 +154,11 @@ table, th, td {
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
+                                while(mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
                                 echo '<tr><td>', $row["actor_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["last_update"] . '</td><td>';
-								//@$actor_id=$row['actor_id'];
-								//@$first_name=$row['first_name'];
-								//@$last_name=$row['last_name'];
+                                $loops++;
+                                }
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
@@ -192,14 +193,14 @@ table, th, td {
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
+                                while(mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
                                 echo '<tr><td>', $row["actor_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["last_update"] . '</td><td>';
-								//@$actor_id=$row['actor_id'];
-								//@$first_name=$row['first_name'];
-								//@$last_name=$row['last_name'];
+                                $loops++;
+                                }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Actor First Name")</script>';
 							}
 						}
 						else{
@@ -231,14 +232,14 @@ table, th, td {
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
+                                while(mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
                                 echo '<tr><td>', $row["actor_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["last_update"] . '</td><td>';
-								//@$actor_id=$row['actor_id'];
-								//@$first_name=$row['first_name'];
-								//@$last_name=$row['last_name'];
+                                $loops++;
+                                }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Actor Last Name")</script>';
 							}
 						}
 						else{

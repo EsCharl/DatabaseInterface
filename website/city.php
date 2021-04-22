@@ -23,7 +23,7 @@ table, th, td {
 </head>
 <body style="background-color:#bdc3c7">
     <div id="main-wrapper">
-        <center><h2>city (Select / Insert / Update/ Delete)</h2></center>
+        <center><h2>City (Select / Insert / Update/ Delete)</h2></center>
 
         <div class="inner_container">
 
@@ -174,7 +174,7 @@ table, th, td {
                     $city_id = $_POST['city_id'];
 
                     if($city_id==""){
-                        echo '<script type="text/javascript">alert("Enter Country ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter City ID to get data")</script>';
                     }
                     else{
                         $query = "select * from city where city_id='$city_id'";

@@ -174,7 +174,7 @@ table, th, td {
 				{
 					if($_POST['address_id']=="")
 					{
-						echo '<script type="text/javascript">alert("Enter any of the fields to delete product")</script>';
+						echo '<script type="text/javascript">alert("Enter an Address ID to delete product")</script>';
 					}
 				else{
 						$address_id = $_POST['address_id'];

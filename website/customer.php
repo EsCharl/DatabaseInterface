@@ -5,10 +5,8 @@ require 'dbconfig\config.php';
 @$store_id="";
 @$first_name="";
 @$last_name="";
-@$picture="";
 @$address_id="";
 @$email="";
-@$store_id="";
 @$active="";
 @$create_date="";
 @$loops = 0;
@@ -26,7 +24,7 @@ table, th, td {
 }
 </style>
 <title>Database</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style1.css">
 </head>
 <body style="background-color:#bdc3c7">
     <div id="main-wrapper">
@@ -36,29 +34,29 @@ table, th, td {
 
             <form action="customer.php" method="post">
 
-                <label><b>Customer ID (insert / delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Customer ID" name="customer_id" value="<?php echo $customer_id;?>"><br>
+                <label><b>Customer ID (insert / delete)</b> 
+                <input type="number" placeholder="Enter Customer ID" name="customer_id" value="<?php echo $customer_id;?>"></label><button id="btn_go" name="fetch_btn" type="submit">Go</button><br>
 
-                <label><b>Store ID (insert / change to)</b> </label><button id="btn_go" name="fetch4_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Store ID" name="store_id" value="<?php echo $store_id;?>"><br>
+                <label><b>Store ID (insert / change to)</b> </label>
+                <input type="number" placeholder="Enter Store ID" name="store_id" value="<?php echo $store_id;?>"><button id="btn_go" name="fetch4_btn" type="submit">Go</button><br>
 
-                <label><b>First Name (insert / change to)</b> </label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter First Name" name="first_name" value="<?php echo $first_name;?>"><br>
+                <label><b>First Name (insert / change to)</b> </label>
+                <input type="text" placeholder="Enter First Name" name="first_name" value="<?php echo $first_name;?>"><button id="btn_go" name="fetch1_btn" type="submit">Go</button><br>
 
-                <label><b>Last Name (insert / change to)</b> </label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter Last Name" name="last_name" value="<?php echo $last_name;?>"><br>
+                <label><b>Last Name (insert / change to)</b> </label>
+                <input type="text" placeholder="Enter Last Name" name="last_name" value="<?php echo $last_name;?>"><button id="btn_go" name="fetch2_btn" type="submit">Go</button><br>
 
-                <label><b>Email Address (insert / change to)</b> </label><button id="btn_go" name="fetch5_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter Email Address" name="email" value="<?php echo $email;?>"><br>
+                <label><b>Email Address (insert / change to)</b> </label>
+                <input type="text" placeholder="Enter Email Address" name="email" value="<?php echo $email;?>"><button id="btn_go" name="fetch5_btn" type="submit">Go</button><br>
 
-                <label><b>Address ID (insert / change to) (0 for NULL)</b> </label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
+                <label><b>Address ID (insert / change to) (0 for NULL)</b> </label>
+                <input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><button id="btn_go" name="fetch3_btn" type="submit">Go</button><br>
 
-                <label><b>Active (insert / change to)</b> </label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter 1 for Active, 0 for Non-active" name="active" value="<?php echo $active;?>"><br>
+                <label><b>Active (insert / change to)</b> </label>
+                <input type="number" placeholder="Enter 1 for Active, 0 for Non-active" name="active" value="<?php echo $active;?>"><button id="btn_go" name="fetch6_btn" type="submit">Go</button><br>
 
-                <label><b>Create Date (date and time)</b></label><button id="btn_go" name="fetch7_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="create_date" value="<?php echo $create_date;?>">
+                <label><b>Create Date (date and time) (Insert: blank for current date and time)</b></label>
+                <input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="create_date" value="<?php echo $create_date;?>"><button id="btn_go" name="fetch7_btn" type="submit">Go</button>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -87,7 +85,11 @@ table, th, td {
                         if($address_id == "0"){
                             $address_id="NULL";
                         }
-                        $query = "insert into customer values ($customer_id,$store_id,'$first_name','$last_name','$email',$address_id,$active,'$create_date','$currentTime')";
+                        if ($create_date == ""){
+                            $query = "insert into customer values ($customer_id,$store_id,'$first_name','$last_name','$email',$address_id,$active,'$currentTime','$currentTime')";
+                        }else{
+                            $query = "insert into customer values ($customer_id,$store_id,'$first_name','$last_name','$email',$address_id,$active,'$create_date','$currentTime')";
+                        }
                         $query_run=mysqli_query($con,$query);
                         if($query_run)
                         {
@@ -236,7 +238,7 @@ table, th, td {
                     $first_name = $_POST['first_name'];
 
                     if($first_name==""){
-                        echo '<script type="text/javascript">alert("Enter First Name of the Staff to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter First Name to get data")</script>';
                     }
                     else{
                         $query = "select * from customer where first_name='$first_name'";
@@ -471,7 +473,7 @@ table, th, td {
                     $active = $_POST['active'];
 
                     if($active==""){
-                        echo '<script type="text/javascript">alert("Enter 0 or 1 to get staff that are active or non-active respectively")</script>';
+                        echo '<script type="text/javascript">alert("Enter 0 or 1 to get customers that are active or non-active respectively")</script>';
                     }
                     else{
                         $query = "select * from customer where active=$active";

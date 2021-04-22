@@ -125,7 +125,7 @@ table, th, td {
                     $language_id = $_POST['language_id'];
 
                     if($language_id==""){
-                        echo '<script type="text/javascript">alert("Enter language_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Language ID to get data")</script>';
                     }
                     else{
                         $query = "select * from Language where language_id=$language_id";
@@ -145,8 +145,6 @@ table, th, td {
 							{
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
                                 echo '<tr><td>', $row["language_id"] . '</td><td>' . $row["name"] . '</td><td>' . $row["last_update"] . '</td><td>';
-								//@$language_id=$row['language_id'];
-								//@$name=$row['name'];
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Language ID")</script>';

@@ -32,7 +32,7 @@ table, th, td {
                 <label><b>Store ID (insert / delete / select)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Store ID" name="store_id" value="<?php echo $store_id;?>"><br>
 
-                <label><b>Manager ID (0 for NULL)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+                <label><b>Manager ID</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Manager ID" name="manager_staff_id" value="<?php echo $manager_staff_id; ?>"><br>
 
                 <label><b>Address ID (0 for NULL)</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
@@ -57,9 +57,6 @@ table, th, td {
                         echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
                     }
                     else{
-                        if($manager_staff_id == "0"){
-                            $manager_staff_id='NULL';
-                        }
                         if($address_id == "0"){
                             $address_id='NULL';
                         }
@@ -92,9 +89,6 @@ table, th, td {
                             if($manager_staff_id == ""){
                                 $manager_staff_id=$row['manager_staff_id'];
                             }
-                            if($manager_staff_id == "0" || empty($manager_staff_id)){
-                                $manager_staff_id='NULL';
-                            }
                             if($address_id == ""){
                                 $address_id=$row['address_id'];
                             }
@@ -113,7 +107,7 @@ table, th, td {
 						}
                     }
                     else{
-                        echo '<script type="text/javascript">alert("Please input a film ID")</script>';
+                        echo '<script type="text/javascript">alert("Please input a Store ID")</script>';
                     }
 				}
 				
@@ -189,7 +183,7 @@ table, th, td {
                     $manager_staff_id = $_POST['manager_staff_id'];
 
                     if($manager_staff_id==""){
-                        echo '<script type="text/javascript">alert("Enter Film ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Manager Staff ID to get data")</script>';
                     }
                     else{
                         if($manager_staff_id == "0"){
@@ -219,7 +213,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid film ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Manager Staff ID ID")</script>';
 							}
 						}
 						else{
@@ -233,7 +227,7 @@ table, th, td {
                     $address_id = $_POST['address_id'];
 
                     if($address_id==""){
-                        echo '<script type="text/javascript">alert("Enter Store ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Address ID to get data")</script>';
                     }
                     else{
                         if($address_id =="0"){
@@ -263,7 +257,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid film ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Address ID")</script>';
 							}
 						}
 						else{

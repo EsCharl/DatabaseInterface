@@ -38,13 +38,13 @@ table, th, td {
                 <label><b>Payment ID (insert / change to)</b> </label><button id="btn_go" name="fetch4_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Payment ID" name="payment_id" value="<?php echo $payment_id;?>"><br>
 
-                <label><b>Customer ID (insert / delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <label><b>Customer ID (insert / change to)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Customer ID" name="customer_id" value="<?php echo $customer_id;?>"><br>
 
                 <label><b>Staff ID (insert / change to)</b> </label><button id="btn_go" name="fetch5_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Staff ID" name="staff_id" value="<?php echo $staff_id;?>"><br>
 
-                <label><b>Rental ID (insert / change to) (0 for NULL)</b> </label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>
+                <label><b>Rental ID (insert / change to) (0 for NULL (Not for Update))</b> </label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Rental ID" name="rental_id" value="<?php echo $rental_id;?>"><br>
 
                 <label><b>Amount (insert / change to)</b> </label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
@@ -128,7 +128,7 @@ table, th, td {
                             }
                         }
 
-                        $query = "UPDATE `payment` SET `rental_id`=$rental_id,`staff_id`='$staff_id',`last_update`='$currentTime',amount=$amount,payment_id=$payment_id WHERE `payment_id`=$payment_id";
+                        $query = "UPDATE `payment` SET `rental_id`=$rental_id,`staff_id`='$staff_id',`last_update`='$currentTime',amount=$amount,payment_date=$payment_date, customer_id=$customer_id WHERE `payment_id`=$payment_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
@@ -214,7 +214,7 @@ table, th, td {
                     $rental_id = $_POST['rental_id'];
 
                     if($rental_id==""){
-                        echo '<script type="text/javascript">alert("Enter Address ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Rental ID to get data")</script>';
                     }
                     else{
                         if($rental_id == "0"){
@@ -248,7 +248,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Address ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Rental ID")</script>';
 							}
 						}
 						else{
@@ -305,7 +305,7 @@ table, th, td {
                     $payment_id = $_POST['payment_id'];
 
                     if($payment_id==""){
-                        echo '<script type="text/javascript">alert("Enter Store ID to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Payment ID to get data")</script>';
                     }
                     else{
                         $query = "select * from payment where payment_id=$payment_id";
@@ -334,7 +334,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Store ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Payment ID")</script>';
 							}
 						}
 						else{
@@ -348,7 +348,7 @@ table, th, td {
                     $amount = $_POST['amount'];
 
                     if($amount==""){
-                        echo '<script type="text/javascript">alert("Enter 0 or 1 to get staff that are active or non-active respectively")</script>';
+                        echo '<script type="text/javascript">alert("Enter an amount")</script>';
                     }
                     else{
                         $query = "select * from payment where amount=$amount";

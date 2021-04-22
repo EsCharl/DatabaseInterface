@@ -28,7 +28,7 @@ table, th, td {
 
             <form action="film_actor.php" method="post">
 
-                <label><b>Actor ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <label><b>Actor ID</b></label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Actor ID" name="actor_id" value="<?php echo $actor_id;?>"><br>
 
                 <label><b>Film ID</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
@@ -77,7 +77,7 @@ table, th, td {
                     @$actorC_id=$_POST['actorC_id'];
 					@$filmC_id=$_POST['filmC_id'];
 						
-                    if($actor_id != "" || $film_id != ""){
+                    if($actorC_id != "" || $filmC_id != ""){
                         if($filmC_id == ""){
                             $filmC_id = $film_id;
                         }
@@ -135,7 +135,7 @@ table, th, td {
                     $actor_id = $_POST['actor_id'];
 
                     if($actor_id==""){
-                        echo '<script type="text/javascript">alert("Enter actor_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Actor ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film_actor where actor_id=$actor_id";
@@ -160,7 +160,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid film ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Actor ID")</script>';
 							}
 						}
 						else{
@@ -174,7 +174,7 @@ table, th, td {
                     $film_id = $_POST['film_id'];
 
                     if($film_id==""){
-                        echo '<script type="text/javascript">alert("Enter film_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Film ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film_actor where film_id=$film_id";
@@ -199,7 +199,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid film ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Film ID")</script>';
 							}
 						}
 						else{

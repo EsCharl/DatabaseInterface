@@ -1,10 +1,9 @@
 <?php
 require 'dbconfig\config.php';
 
-@$district_id="";
-@$district="";
-@$country_id="";
-@$loops=0;
+@$staff_id="";
+@$username="";
+@$password="";
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -23,20 +22,20 @@ table, th, td {
 </head>
 <body style="background-color:#bdc3c7">
     <div id="main-wrapper">
-        <center><h2>District (Select / Insert / Update/ Delete)</h2></center>
+        <center><h2>Staff Login (Select / Insert / Update/ Delete)</h2></center>
 
         <div class="inner_container">
 
-            <form action="district.php" method="post">
+            <form action="staff_login.php" method="post">
 
-                <label><b>District ID (insert or delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter District ID" name="district_id" value="<?php echo $district_id;?>"><br>
+                <label><b>Staff ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
+                <input type="number" placeholder="Enter Staff ID" name="staff_id" value="<?php echo $staff_id;?>"><br>
 
-                <label><b>Country ID (insert or delete)</b> </label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Country ID" name="country_id" value="<?php echo $country_id;?>"><br>
-
-                <label><b>District (insert or delete specific)</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter District Name" name="district" value="<?php echo $district; ?>"><br>
+                <label><b>Username </b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+                <input type="text" placeholder="Enter First Name" name="username" value="<?php echo $username; ?>"><br>
+        
+                <label><b>Password (- for NULL (Select only))</b></label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+                <input type="text" placeholder="Enter Last Name" name="password" value="<?php echo $password; ?>">
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -48,16 +47,16 @@ table, th, td {
             <?php
                 if(isset($_POST['insert_btn']))
                 {
-                    @$district_id=$_POST['district_id'];
-                    @$country_id=$_POST['country_id'];
-                    @$district=$_POST['district'];
+                    @$staff_id=$_POST['staff_id'];
+                    @$username=$_POST['username'];
+                    @$password=$_POST['password'];
 
-                    if($district_id=="" || $district=="" || $country_id=="")
+                    if($staff_id=="" || $username=="" || $password=="")
                     {
                         echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
                     }
                     else{
-                        $query = "insert into district values ('$district_id','$country_id','$district','$currentTime')";
+                        $query = "insert into staff_login values ($staff_id,'$username','$password')";
                         $query_run=mysqli_query($con,$query);
                         if($query_run)
                         {
@@ -71,27 +70,32 @@ table, th, td {
 
                 else if(isset($_POST['update_btn']))
 				{
-					@$district_id=$_POST['district_id'];
-                    @$country_id=$_POST['country_id'];
-                    @$district=$_POST['district'];
+					@$staff_id=$_POST['staff_id'];
+                    @$username=$_POST['username'];
+                    @$password=$_POST['password'];
 						
-                    if($district_id != ""){
-                        $query = "select * from district where district_id=$district_id";
+                    if($staff_id != ""){
+                        $query = "select * from staff_login where staff_id=$staff_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             if(mysqli_num_rows($query_run)>0)
 							{
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
 							}
-                            if($district == ""){
-                                $district=$row['district'];
+                            if($username == ""){
+                                $username=$row['username'];
                             }
-                            if($country_id == ""){
-                                $country_id=$row['country_id'];
+                            if($password == ""){
+                                $password=$row['password'];
                             }
+                            
+                        }
+                        if(empty($password)){
+                            $query = "update staff_login SET username = '$username', password=NULL WHERE staff_id=$staff_id";
+                        }else{
+                            $query = "update staff_login SET username = '$username', password='$password' WHERE staff_id=$staff_id";
                         }
                         
-                        $query = "update district SET country_id = $country_id ,district = '$district', last_update='$currentTime' WHERE district_id=$district_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run)
 						{
@@ -102,19 +106,20 @@ table, th, td {
 						}
                     }
                     else{
-                        echo '<script type="text/javascript">alert("Please input an District ID")</script>';
+                        echo '<script type="text/javascript">alert("Please input an Staff ID")</script>';
                     }
 				}
 				
 				else if(isset($_POST['delete_btn']))
 				{
-					if($_POST['district_id']=="")
+					if($_POST['staff_id']=="")
 					{
-						echo '<script type="text/javascript">alert("Enter a District ID to delete product")</script>';
+						echo '<script type="text/javascript">alert("Enter a Staff ID to delete product")</script>';
 					}
 				else{
-						$district_id = $_POST['district_id'];
-                        $query = "delete from district WHERE district_id=$district_id";
+						$staff_id = $_POST['staff_id'];
+						$query = "delete from staff_login 
+							WHERE staff_id=$staff_id";
 						$query_run = mysqli_query($con,$query);
 						if($query_run)
 						{
@@ -131,13 +136,13 @@ table, th, td {
             <?php
                 if(isset($_POST['fetch_btn'])){
 
-                    $district_id = $_POST['district_id'];
+                    $staff_id = $_POST['staff_id'];
 
-                    if($district_id==""){
-                        echo '<script type="text/javascript">alert("Enter District ID to get data")</script>';
+                    if($staff_id==""){
+                        echo '<script type="text/javascript">alert("Enter Staff ID to get data")</script>';
                     }
                     else{
-                        $query = "select * from district where district_id=$district_id";
+                        $query = "select * from staff_login where staff_id=$staff_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -145,22 +150,18 @@ table, th, td {
                                 <table class="w3-table_all">
                                 <tread>
                                 <tr class="w3-light-grey">
-                                <th>District ID</th>
-                                <th>Country ID</th>
-                                <th>District</th>
-                                <th>Last Update</th>
+                                <th>Staff ID</th>
+                                <th>Username</th>
+                                <th>Password</th>
                                 </tr>
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-                                while (mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["district_id"] . '</td><td>' . $row["country_id"] . '</td><td>' . $row["district"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
-                                }
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td><td>';
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid District ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Staff ID")</script>';
 							}
 						}
 						else{
@@ -168,16 +169,15 @@ table, th, td {
 						}
                     }
                 }
-
                 else if(isset($_POST['fetch1_btn'])){
 
-                    $country_id = $_POST['country_id'];
+                    $username = $_POST['username'];
 
-                    if($country_id==""){
-                        echo '<script type="text/javascript">alert("Enter Country ID to get data")</script>';
+                    if($username==""){
+                        echo '<script type="text/javascript">alert("Enter Staff Username to get data")</script>';
                     }
                     else{
-                        $query = "select * from district where country_id='$country_id'";
+                        $query = "select * from staff_login where username='$username'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -185,22 +185,18 @@ table, th, td {
                                 <table class="w3-table_all">
                                 <tread>
                                 <tr class="w3-light-grey">
-                                <th>District ID</th>
-                                <th>Country ID</th>
-                                <th>District</th>
-                                <th>Last Update</th>
+                                <th>Staff ID</th>
+                                <th>Username</th>
+                                <th>Password</th>
                                 </tr>
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-                                while (mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["district_id"] . '</td><td>' . $row["country_id"] . '</td><td>' . $row["district"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
-                                }
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td><td>' ;
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Country ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Staff ID")</script>';
 							}
 						}
 						else{
@@ -210,13 +206,17 @@ table, th, td {
                 }
                 else if(isset($_POST['fetch2_btn'])){
 
-                    $district = $_POST['district'];
+                    $password = $_POST['password'];
 
-                    if($district==""){
-                        echo '<script type="text/javascript">alert("Enter District to get data")</script>';
+                    if($password==""){
+                        echo '<script type="text/javascript">alert("Enter Staff Password to get data")</script>';
                     }
                     else{
-                        $query = "select * from district where district='$district'";
+                        if($password == "-"){
+                            $query = "select * from staff_login where password IS NULL";
+                        }else{
+                            $query = "select * from staff_login where password='$password'";
+                        }
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -224,22 +224,18 @@ table, th, td {
                                 <table class="w3-table_all">
                                 <tread>
                                 <tr class="w3-light-grey">
-                                <th>District ID</th>
-                                <th>Country ID</th>
-                                <th>District</th>
-                                <th>Last Update</th>
+                                <th>Staff ID</th>
+                                <th>Username</th>
+                                <th>Password</th>
                                 </tr>
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-                                while (mysqli_num_rows($query_run) != $loops){
 								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["district_id"] . '</td><td>' . $row["country_id"] . '</td><td>' . $row["district"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
-                                }
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td><td>';
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid District")</script>';
+								echo '<script type="text/javascript">alert("Invalid Staff Password")</script>';
 							}
 						}
 						else{

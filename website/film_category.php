@@ -31,7 +31,7 @@ table, th, td {
                 <label><b>Film ID</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 
-                <label><b>Category ID (insert or change to)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+                <label><b>Category ID (insert or change to or delete)</b></label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Category ID" name="category_id" value="<?php echo $category_id; ?>"><br>
 
                 <center>
@@ -121,7 +121,7 @@ table, th, td {
                     $film_id = $_POST['film_id'];
 
                     if($film_id==""){
-                        echo '<script type="text/javascript">alert("Enter film_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Film ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film_category where film_id=$film_id";
@@ -146,7 +146,7 @@ table, th, td {
                                 }
 							}
 							else{
-								echo '<script type="text/javascript">alert("Invalid Category ID")</script>';
+								echo '<script type="text/javascript">alert("Invalid Film ID")</script>';
 							}
 						}
 						else{
@@ -160,7 +160,7 @@ table, th, td {
                     $category_id = $_POST['category_id'];
 
                     if($category_id==""){
-                        echo '<script type="text/javascript">alert("Enter category_id to get data")</script>';
+                        echo '<script type="text/javascript">alert("Enter Category ID to get data")</script>';
                     }
                     else{
                         $query = "select * from film_category where category_id=$category_id";
