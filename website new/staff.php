@@ -72,13 +72,17 @@ table, th, td {
                     @$last_name=$_POST['last_name'];
                     @$first_name=$_POST['first_name'];
                     @$address_id=$_POST['address_id'];
-                    @$picture= addslashes(file_get_contents($_FILES['picture']['tmp_name']));
+					
+
                     @$email=$_POST['email'];
                     @$active=$_POST['active'];
                     @$store_id=$_POST['store_id'];
-				
+					
+					if (is_uploaded_file($_FILES['picture']['tmp_name']))
+						@$picture = addslashes(file_get_contents($_FILES['picture']['tmp_name'])); 
+					else $picture = "";
 
-                    if($staff_id=="" || $last_name=="" || $store_id=="" || $email=="" || $first_name=="" || $active == "" || $address_id == "")
+                    if($staff_id=="" || $last_name=="" || $store_id=="" || $email=="" || $first_name=="" || $active == "" || $address_id == "" || $picture == "")
                     {
                         echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
                     }
@@ -108,8 +112,10 @@ table, th, td {
                     @$active=$_POST['active'];
                     @$store_id=$_POST['store_id'];
 					
-					// Picture Upload
-					@$picture = addslashes(file_get_contents($_FILES['picture']['tmp_name']));
+					if (is_uploaded_file($_FILES['picture']['tmp_name']))
+						@$picture = addslashes(file_get_contents($_FILES['picture']['tmp_name'])); 
+					else $picture = "";
+					
 										
                     if($staff_id != ""){
                         $query = "select * from staff where staff_id=$staff_id";
@@ -132,7 +138,7 @@ table, th, td {
                                 $address_id="NULL";
                             }
                             if($picture == ""){
-                                $picture=$row['picture'];
+                                $picture = addslashes($row['picture']);
                             }
                             if($email == ""){
                                 $email=$row['email'];
