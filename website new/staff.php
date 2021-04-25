@@ -20,9 +20,7 @@ echo $currentTime;
 <style>
 table, th, td {
   border: 1px solid black;
-  border-collapse: seperate;
-  margin-left: auto;
-  margin-right: auto;
+  border-collapse: collapse;
 }
 </style>
 <title>Database</title>
@@ -34,7 +32,7 @@ table, th, td {
 
         <div class="inner_container">
 
-            <form action="staff.php" method="post">
+            <form action="staff.php" method="post" enctype="multipart/form-data">
 
                 <label><b>Staff ID (insert / delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Staff ID" name="staff_id" value="<?php echo $staff_id;?>"><br>
@@ -49,7 +47,7 @@ table, th, td {
                 <input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
 
                 <label><b>Picture</b></label><br>
-                <input type="file" name="picture" /><br>
+                <input type="file" name="picture" value=""/><br>
 
                 <label><b>Email Address (insert / change to)</b> </label><button id="btn_go" name="fetch5_btn" type="submit">Go</button>
                 <input type="text" placeholder="Enter Email Address" name="email" value="<?php echo $email;?>"><br>
@@ -66,35 +64,6 @@ table, th, td {
                     <button id="btn_delete" name="delete_btn" type="submit">Delete</button>
                 </center>
             </form>
-			
-		<center>
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" align="center">
-				<label for="table">Choose a table from the list:</label>
-				<input list="tables" name="table" id="table">
-				<datalist id="tables">
-					<option value="actor">
-					<option value="address">
-					<option value="category">
-					<option value="city">
-					<option value="country">
-					<option value="customer">
-					<option value="district">
-					<option value="film">
-					<option value="film_actor">
-					<option value="film_category">
-					<option value="film_rental">
-					<option value="film_special_features">
-					<option value="film_text">
-					<option value="inventory">
-					<option value="language">
-					<option value="payment">
-					<option value="rental">
-					<option value="staff_login">
-					<option value="store">
-				</datalist>
-				<input type="submit">
-			</form>
-		</center>
 
             <?php
                 if(isset($_POST['insert_btn']))
@@ -103,10 +72,11 @@ table, th, td {
                     @$last_name=$_POST['last_name'];
                     @$first_name=$_POST['first_name'];
                     @$address_id=$_POST['address_id'];
-                    @$picture=$_POST['picture'];
+                    @$picture= addslashes(file_get_contents($_FILES['picture']['tmp_name']));
                     @$email=$_POST['email'];
                     @$active=$_POST['active'];
                     @$store_id=$_POST['store_id'];
+				
 
                     if($staff_id=="" || $last_name=="" || $store_id=="" || $email=="" || $first_name=="" || $active == "" || $address_id == "")
                     {
@@ -134,14 +104,17 @@ table, th, td {
                     @$last_name=$_POST['last_name'];
                     @$first_name=$_POST['first_name'];
                     @$address_id=$_POST['address_id'];
-                    @$picture=$_POST['picture'];
                     @$email=$_POST['email'];
                     @$active=$_POST['active'];
                     @$store_id=$_POST['store_id'];
-						
+					
+					// Picture Upload
+					@$picture = addslashes(file_get_contents($_FILES['picture']['tmp_name']));
+										
                     if($staff_id != ""){
                         $query = "select * from staff where staff_id=$staff_id";
                         $query_run = mysqli_query($con,$query);
+							
                         if($query_run){
                             if(mysqli_num_rows($query_run)>0)
 							{
@@ -170,16 +143,20 @@ table, th, td {
                             if($store_id == ""){
                                 $store_id=$row['store_id'];
                             }
+							
                         }
 
-                        $query = "UPDATE `staff` SET `first_name`=$first_name,`last_name`=$last_name,`address_id`=$address_id,`picture`=$picture,`email`='$email',`last_update`='$currentTime',active=$active,store_id=$store_id WHERE `staff_id`=$staff_id";
+                        $query = "UPDATE `staff` SET `first_name`='$first_name',`last_name`='$last_name',`address_id`='$address_id', `picture`='$picture', `email`='$email',`last_update`='$currentTime',active=$active,store_id=$store_id WHERE `staff_id`=$staff_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
 						}
 						else{
-							echo '<script type="text/javascript">alert("Error")</script>';
+							echo '<script type="text/javascript">alert("Update Error Detected")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
+						
+						
                     }
                     else{
                         echo '<script type="text/javascript">alert("Please input a Staff ID")</script>';
@@ -240,14 +217,20 @@ table, th, td {
                             if(mysqli_num_rows($query_run)>0)
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
-                                $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-								$image_info = getimagesizefromstring($row['picture']);
-								$mime_type = $image_info['mime'];
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td></tr>';
-								echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
-								echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+								
+									if(!empty($row['picture'])){
+										$image_info = getimagesizefromstring($row['picture']);
+										$mime_type = $image_info['mime'];
+									}
+									else $mime_type = NULL;
+									
+									echo ($mime_type);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
 
-                                $loops++;
+									$loops++;
                                 }
 							}
 							else{
@@ -290,9 +273,19 @@ table, th, td {
                             if(mysqli_num_rows($query_run)>0)
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
-                                $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
-                                $loops++;
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+									
+									echo '<tr><td>', 
+									$row["staff_id"] . '</td><td>' . 
+									$row["first_name"] . '</td><td>' . 
+									$row["last_name"] . '</td><td>' . 
+									$row["address_id"] . '</td><td>' . 
+									$row["picture"] . '</td><td>' . 
+									$row["email"] . '</td><td>' . 
+									$row["store_id"] . '</td><td>' . 
+									$row["active"] . '</td><td>' . 
+									$row["last_update"] . '</td><td>';
+									$loops++;
                                 }
 							}
 							else{
@@ -336,7 +329,7 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
                                 $loops++;
                                 }
 							}
@@ -386,7 +379,7 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
                                 $loops++;
                                 }
 							}
@@ -431,7 +424,7 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
                                 $loops++;
                                 }
 							}
@@ -481,7 +474,7 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
                                 $loops++;
                                 }
 							}
@@ -526,7 +519,7 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
                                 $loops++;
                                 }
 							}
@@ -542,83 +535,5 @@ table, th, td {
             ?>
         </div>
     </div>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	
-  if(isset($_POST['table'])){
-	  $name = $_POST['table'];
-  } else {
-	  $name = "0";
-  }
-  
-  switch ($name) {
-	  
-  case "0":
-	break;
-  case "actor":
-    header("Location: actor.php");
-    break;
-  case "address":
-    header("Location: address.php");
-    break;
-  case "category":
-    header("Location: category.php");
-    break;
-  case "city":
-    header("Location: city.php");
-    break;	
-  case "country":
-    header("Location: country.php");
-    break;
-  case "customer":
-    header("Location: customer.php");
-    break;
-  case "district":
-    header("Location: district.php");
-    break;
-  case "film":
-    header("Location: film.php");
-    break;
-  case "film_actor":
-    header("Location: film_actor.php");
-    break;
-  case "film_category":
-    header("Location: film_category.php");
-    break;
-  case "film_rental":
-    header("Location: film_rental.php");
-    break;
-  case "film_special_features":
-    header("Location: film_special_features.php");
-    break;	
-  case "film_text":
-    header("Location: film_text.php");
-    break;
-  case "inventory":
-    header("Location: inventory.php");
-    break;
-  case "language":
-    header("Location: language.php");
-    break;	
-  case "payment":
-    header("Location: payment.php");
-    break;
-  case "rental":
-    header("Location: rental.php");
-    break;
-  case "staff_login":
-    header("Location: staff_login.php");
-    break;
-  case "store":
-    header("Location: store.php");
-    break;
-  default:
-    echo "<p align=center style=color:red>Invalid table name!</p>";
-	break;
-   }
-}
-?>
-
 </body>
 </html>
