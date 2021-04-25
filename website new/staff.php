@@ -24,7 +24,7 @@ table, th, td {
 }
 </style>
 <title>Database</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style1.css">
 </head>
 <body style="background-color:#bdc3c7">
     <div id="main-wrapper">
@@ -55,7 +55,7 @@ table, th, td {
                 <label><b>Store ID (insert / change to)</b> </label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter Store ID" name="store_id" value="<?php echo $store_id;?>"><br>
 
-                <label><b>Active (insert / change to)</b> </label><button id="btn_go" name="fetch6_btn" type="submit">Go</button>
+                <label><b>Active (insert / change to)</b> </label><button id="btn_go" name="fetch4_btn" type="submit">Go</button>
                 <input type="number" placeholder="Enter 1 for Active, 0 for Deactive" name="active" value="<?php echo $active;?>"><br>
 
                 <center>
@@ -251,7 +251,7 @@ table, th, td {
                         echo '<script type="text/javascript">alert("Enter First Name of the Staff to get data")</script>';
                     }
                     else{
-                        $query = "select * from staff where first_name=$first_name";
+                        $query = "select * from staff where first_name='$first_name'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -275,16 +275,17 @@ table, th, td {
                                 while (mysqli_num_rows($query_run) != $loops){
 									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
 									
-									echo '<tr><td>', 
-									$row["staff_id"] . '</td><td>' . 
-									$row["first_name"] . '</td><td>' . 
-									$row["last_name"] . '</td><td>' . 
-									$row["address_id"] . '</td><td>' . 
-									$row["picture"] . '</td><td>' . 
-									$row["email"] . '</td><td>' . 
-									$row["store_id"] . '</td><td>' . 
-									$row["active"] . '</td><td>' . 
-									$row["last_update"] . '</td><td>';
+									if(!empty($row['picture'])){
+										$image_info = getimagesizefromstring($row['picture']);
+										$mime_type = $image_info['mime'];
+									}
+									else $mime_type = NULL;
+									
+									echo ($mime_type);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+
 									$loops++;
                                 }
 							}
@@ -306,7 +307,7 @@ table, th, td {
                         echo '<script type="text/javascript">alert("Enter Last Name to get data")</script>';
                     }
                     else{
-                        $query = "select * from staff where last_name=$last_name";
+                        $query = "select * from staff where last_name='$last_name'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -329,8 +330,19 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
+
+                                if(!empty($row['picture'])){
+									$image_info = getimagesizefromstring($row['picture']);
+									$mime_type = $image_info['mime'];
+								}
+								else $mime_type = NULL;
+									
+								echo ($mime_type);
+								echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+								echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+								echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+
+								$loops++;
                                 }
 							}
 							else{
@@ -379,8 +391,19 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
+
+                                if(!empty($row['picture'])){
+										$image_info = getimagesizefromstring($row['picture']);
+										$mime_type = $image_info['mime'];
+									}
+									else $mime_type = NULL;
+									
+									echo ($mime_type);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+
+									$loops++;
                                 }
 							}
 							else{
@@ -424,8 +447,19 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
+
+                                if(!empty($row['picture'])){
+										$image_info = getimagesizefromstring($row['picture']);
+										$mime_type = $image_info['mime'];
+									}
+									else $mime_type = NULL;
+									
+									echo ($mime_type);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+
+									$loops++;
                                 }
 							}
 							else{
@@ -440,9 +474,9 @@ table, th, td {
 
                 if(isset($_POST['fetch6_btn'])){
 
-                    $store_id = $_POST['=store_id'];
+                    $store_id = $_POST['store_id'];
 
-                    if($address_id==""){
+                    if($store_id==""){
                         echo '<script type="text/javascript">alert("Enter Store ID to get data")</script>';
                     }
                     else{
@@ -474,8 +508,19 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
+                                
+                                if(!empty($row['picture'])){
+										$image_info = getimagesizefromstring($row['picture']);
+										$mime_type = $image_info['mime'];
+									}
+									else $mime_type = NULL;
+									
+									echo ($mime_type);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+
+									$loops++;
                                 }
 							}
 							else{
@@ -488,11 +533,11 @@ table, th, td {
                     }
                 }
 
-                if(isset($_POST['fetch3_btn'])){
+                if(isset($_POST['fetch4_btn'])){
 
-                    $address_id = $_POST['address_id'];
+                    $active = $_POST['active'];
 
-                    if($address_id==""){
+                    if($active==""){
                         echo '<script type="text/javascript">alert("Enter 1 or 0 to get staff that are active or non-active respectively")</script>';
                     }
                     else{
@@ -519,8 +564,19 @@ table, th, td {
 							{
                                 while (mysqli_num_rows($query_run) != $loops){
                                 $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>' . $row["picture"] . '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td><td>';
-                                $loops++;
+                                
+                                if(!empty($row['picture'])){
+										$image_info = getimagesizefromstring($row['picture']);
+										$mime_type = $image_info['mime'];
+									}
+									else $mime_type = NULL;
+									
+									echo ($mime_type);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
+									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
+									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+
+									$loops++;
                                 }
 							}
 							else{
