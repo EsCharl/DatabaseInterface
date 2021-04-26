@@ -25,7 +25,7 @@ label{
 }
 table, th, td {
   border: 1px solid black;
-  border-collapse: seperate;
+  border-collapse: separate;
   margin-left: auto;
   margin-right: auto;
 }
