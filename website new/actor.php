@@ -291,71 +291,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  $name = "0";
   }
   
-  switch ($name) {
-	  
-  case "0":
-	break;
-  case "address":
-    header("Location: address.php");
-    break;
-  case "category":
-    header("Location: category.php");
-    break;
-  case "city":
-    header("Location: city.php");
-    break;	
-  case "country":
-    header("Location: country.php");
-    break;
-  case "customer":
-    header("Location: customer.php");
-    break;
-  case "district":
-    header("Location: district.php");
-    break;
-  case "film":
-    header("Location: film.php");
-    break;
-  case "film_actor":
-    header("Location: film_actor.php");
-    break;
-  case "film_category":
-    header("Location: film_category.php");
-    break;
-  case "film_rental":
-    header("Location: film_rental.php");
-    break;
-  case "film_special_features":
-    header("Location: film_special_features.php");
-    break;	
-  case "film_text":
-    header("Location: film_text.php");
-    break;
-  case "inventory":
-    header("Location: inventory.php");
-    break;
-  case "language":
-    header("Location: language.php");
-    break;	
-  case "payment":
-    header("Location: payment.php");
-    break;
-  case "rental":
-    header("Location: rental.php");
-    break;
-  case "staff":
-    header("Location: staff.php");
-    break;
-  case "staff_login":
-    header("Location: staff_login.php");
-    break;
-  case "store":
-    header("Location: store.php");
-    break;
-  default:
-    echo "<p align=center style=color:red>Invalid table name!</p>";
-	break;
-   }
+  $redirect_str = "<script>window.location.href='http://hcytt1.mercury.nottingham.edu.my/" . $name . ".php';</script>";
+  echo $redirect_str;
+  exit();
 }
 ?>
 
