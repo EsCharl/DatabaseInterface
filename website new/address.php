@@ -15,84 +15,140 @@ echo $currentTime;
 <!DOCTYPE html>
 <html>
 <head>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-<style>
-label{
-    font-family: 'Montserrat';
-    font-size: 15px;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: separate;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<title>Database</title>
-<link rel="stylesheet" href="css/style.css">
+
+	<title>Database</title>
+	
+	<!-- Webpage Style -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	<link rel="stylesheet" href="css/style_mobile.css">
+	
+	<!-- Metadata -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 </head>
 <body style="background-color:#bdc3c7">
-    <div id="main-wrapper">
-        <center><h2>Address (Select / Insert / Update/ Delete)</h2></center>
+
+        <div class="row"><div class="col-12"><h2>Address (Select / Insert / Update/ Delete)</h2></div></div>
 
         <div class="inner_container">
 
             <form action="address.php" method="post">
 
-                <label><b>Address ID (insert / delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
+                <form action="staff.php" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-2">
+						<label>Address ID (Insert / Update) (0 for NULL) </label>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch_btn" type="submit">Go</button>
+					</div>
+				</div>
 
-                <label><b>Address (insert / change to)</b> </label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter Address" name="address" value="<?php echo $address;?>"><br>
+				<div class="row">
+					<div class="col-2">
+						<label>Address (insert / change to)</label>
+					</div>
+					<div class="col-8">
+						<input type="text" placeholder="Enter Address" name="address" value="<?php echo $address;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+					</div>
+				</div>
 
-                <label><b>Address2 (insert / change to) (- for NULL)</b> </label><button id="btn_go" name="fetch5_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter address2" name="address2" value="<?php echo $address2;?>"><br>
-
-                <label><b>City ID (insert / change to)</b> </label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter City ID" name="city_id" value="<?php echo $city_id;?>"><br>
+				<div class="row">
+					<div class="col-2">
+						<label>Address2 (insert / change to) (- for NULL)</label>
+					</div>
+					<div class="col-8">
+						<input type="text" placeholder="Enter address2" name="address2" value="<?php echo $address2;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch5_btn" type="submit">Go</button>
+					</div>
+				</div>
                 
-                <label><b>Postal Code (insert / change to) (0 for NULL)</b> </label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Postal Code" name="postal_code" value="<?php echo $postal_code;?>"><br>
+				<div class="row">
+					<div class="col-2">
+						<label>City ID (insert / change to)</label>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter City ID" name="city_id" value="<?php echo $city_id;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+					</div>
+				</div>
+                
+				<div class="row">
+					<div class="col-2">
+						<label>Postal Code (insert / change to) (0 for NULL)</label><br>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Postal Code" name="postal_code" value="<?php echo $postal_code;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch3_btn" type="submit">Go</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-2">
+						<label>Phone (insert / change to) (- for NULL)</label>
+					</div>
+					<div class="col-8">
+						<input type="text" placeholder="Enter Phone Number" name="phone" value="<?php echo $phone;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch4_btn" type="submit">Go</button>
+					</div>
+				</div>
 
-                <label><b>Phone (insert / change to) (- for NULL)</b> </label><button id="btn_go" name="fetch4_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter Phone Number" name="phone" value="<?php echo $phone;?>"><br>
 
-
-                <center>
-                    <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
-                    <button id="btn_update" name="update_btn" type="submit">Update</button>
-                    <button id="btn_delete" name="delete_btn" type="submit">Delete</button>
-                </center>
+                <div class="row">
+					<div class="col-12">
+						<center>
+							<button id="btn_insert" name="insert_btn" type="submit">Insert</button>
+							<button id="btn_update" name="update_btn" type="submit">Update</button>
+							<button id="btn_delete" name="delete_btn" type="submit">Delete</button>
+						</center>
+					</div>
+				</div>
             </form>
-			
-		<center>
-			<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" align="center">
-				<label for="table">Choose a table from the list:</label>
-				<input list="tables" name="table" id="table">
-				<datalist id="tables">
-					<option value="actor">
-					<option value="category">
-					<option value="city">
-					<option value="country">
-					<option value="customer">
-					<option value="district">
-					<option value="film">
-					<option value="film_actor">
-					<option value="film_category">
-					<option value="film_rental">
-					<option value="film_special_features">
-					<option value="film_text">
-					<option value="inventory">
-					<option value="language">
-					<option value="payment">
-					<option value="rental">
-					<option value="staff">
-					<option value="staff_login">
-					<option value="store">
-				</datalist>
-				<input type="submit">
-			</form>
-		</center>
+
+            <div class="row">
+				<div class="col-12">
+					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" align="center">
+						<label for="table">Choose a table from the list:</label>
+						<input list="tables" name="table" id="table">
+							<datalist id="tables">
+								<option value="actor">
+								<option value="address">
+								<option value="category">
+								<option value="city">
+								<option value="country">
+								<option value="customer">
+								<option value="district">
+								<option value="film">
+								<option value="film_actor">
+								<option value="film_category">
+								<option value="film_rental">
+								<option value="film_special_features">
+								<option value="film_text">
+								<option value="inventory">
+								<option value="language">
+								<option value="payment">
+								<option value="rental">
+								<option value="staff_login">
+								<option value="store">
+							</datalist>
+						<input type="submit">
+					</form>
+				</div>
+            </div>
 
             <?php
                 if(isset($_POST['insert_btn']))
