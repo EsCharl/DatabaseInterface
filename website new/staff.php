@@ -25,7 +25,9 @@ label{
 }
 table, th, td {
   border: 1px solid black;
-  border-collapse: collapse;
+  border-collapse: seperate;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 <title>Database</title>
@@ -69,6 +71,35 @@ table, th, td {
                     <button id="btn_delete" name="delete_btn" type="submit">Delete</button>
                 </center>
             </form>
+
+            <center>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" align="center">
+                    <label for="table">Choose a table from the list:</label>
+                    <input list="tables" name="table" id="table">
+                        <datalist id="tables">
+                            <option value="actor">
+                            <option value="address">
+                            <option value="category">
+                            <option value="city">
+                            <option value="country">
+                            <option value="customer">
+                            <option value="district">
+                            <option value="film">
+                            <option value="film_actor">
+                            <option value="film_category">
+                            <option value="film_rental">
+                            <option value="film_special_features">
+                            <option value="film_text">
+                            <option value="inventory">
+                            <option value="language">
+                            <option value="payment">
+                            <option value="rental">
+                            <option value="staff_login">
+                            <option value="store">
+                        </datalist>
+                    <input type="submit">
+                </form>
+            </center>
 
             <?php
                 if(isset($_POST['insert_btn']))
@@ -609,5 +640,20 @@ table, th, td {
             ?>
         </div>
     </div>
+
+    <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+  if(isset($_POST['table'])){
+	  $name = $_POST['table'];
+  } else {
+	  $name = "0";
+  }
+  
+  $redirect_str = "<script>window.location.href='http://hcytt1.mercury.nottingham.edu.my/" . $name . ".php';</script>";
+  echo $redirect_str;
+  exit();
+}
+?>
 </body>
 </html>
