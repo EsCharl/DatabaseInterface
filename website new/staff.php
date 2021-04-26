@@ -187,6 +187,7 @@ table, th, td {
 						else
 						{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
 					}
 				}
@@ -245,6 +246,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
@@ -287,7 +289,6 @@ table, th, td {
 									}
 									else $mime_type = NULL;
 									
-									echo ($mime_type);
 									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
 									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
 									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
@@ -301,6 +302,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
@@ -357,6 +359,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
@@ -418,6 +421,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
@@ -474,6 +478,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
@@ -535,6 +540,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
@@ -591,6 +597,7 @@ table, th, td {
 						}
 						else{
 							echo '<script type="text/javascript">alert("Error in query")</script>';
+							echo("Update Error description: " . $con -> error);
 						}
                     }
                 }
