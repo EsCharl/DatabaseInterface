@@ -15,47 +15,95 @@ echo $currentTime;
 <!DOCTYPE html>
 <html>
 <head>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-<style>
-label{
-    font-family: 'Montserrat';
-    font-size: 15px;
-}
-table, th, td {
-  border: 1px solid black;
-  border-collapse: separate;
-  margin-left: auto;
-  margin-right: auto;
-}
-</style>
-<title>Database</title>
-<link rel="stylesheet" href="css/style.css">
+
+	<title>Database</title>
+	
+	<!-- Webpage Style -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	<link rel="stylesheet" href="css/style_mobile.css">
+	
+	<!-- Metadata -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 </head>
 <body style="background-color:#bdc3c7">
-    <div id="main-wrapper">
-        <center><h2>Film (Select / Insert / Update/ Delete)</h2></center>
+    
+        <div class="row"><div class="col-12"><h2>Film (Select / Insert / Update/ Delete)</h2></div></div>
 
         <div class="inner_container">
 
-            <form action="film.php" method="post">
+            <form action="film.php" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-2">
+						<label>Film ID (insert / delete)</label>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
+					</div>
+				</div>
 
-                <label><b>Film ID (insert / delete)</b> </label><button id="btn_go" name="fetch_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
-
-                <label><b>Film Release Year (insert / change to)</b> </label><button id="btn_go" name="fetch1_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Film Year" name="release_year" value="<?php echo $release_year;?>"><br>
-
-                <label><b>Language ID (insert / change to)</b> </label><button id="btn_go" name="fetch2_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Language ID" name="language_id" value="<?php echo $language_id;?>"><br>
+				<div class="row">
+					<div class="col-2">
+						<label>Film Release Year (insert / change to)</label>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Film Year" name="release_year" value="<?php echo $release_year;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-2">
+						<label>Language ID (insert / change to)</label>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Language ID" name="language_id" value="<?php echo $language_id;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
+					</div>
+				</div>
                 
-                <label><b>Original Language ID (insert / change to) (0 for NULL)</b> </label><button id="btn_go" name="fetch3_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Oringal Language ID" name="original_language_id" value="<?php echo $original_language_id;?>"><br>
+				<div class="row">
+					<div class="col-2">
+						<label>Original Language ID (insert / change to) (0 for NULL)</label>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Oringal Language ID" name="original_language_id" value="<?php echo $original_language_id;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch3_btn" type="submit">Select</button>
+					</div>
+				</div>
 
-                <label><b>Length (insert / change to)</b> </label><button id="btn_go" name="fetch4_btn" type="submit">Go</button>
-                <input type="number" placeholder="Enter Movie Length" name="length" value="<?php echo $length;?>"><br>
-
-                <label><b>Rating (insert / change to)</b> </label><button id="btn_go" name="fetch5_btn" type="submit">Go</button>
-                <input type="text" placeholder="Enter Rating" name="rating" value="<?php echo $rating;?>"><br>
+				<div class="row">
+					<div class="col-2">
+						<label>Length (insert / change to)</label><br>
+					</div>
+					<div class="col-8">
+						<input type="number" placeholder="Enter Movie Length" name="length" value="<?php echo $length;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-2">
+						<label>Rating (insert / change to)</label>
+					</div>
+					<div class="col-8">
+						<input type="text" placeholder="Enter Rating" name="rating" value="<?php echo $rating;?>"><br>
+					</div>
+					<div class="col-2">
+						<button id="btn_go" name="fetch5_btn" type="submit">Select</button>
+					</div>
+				</div>
 
                 <center>
                     <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
@@ -76,6 +124,7 @@ table, th, td {
 					<option value="country">
 					<option value="customer">
 					<option value="district">
+					<option value="film">
 					<option value="film_actor">
 					<option value="film_category">
 					<option value="film_rental">

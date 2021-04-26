@@ -166,6 +166,7 @@ echo $currentTime;
 								<option value="language">
 								<option value="payment">
 								<option value="rental">
+								<option value="staff">
 								<option value="staff_login">
 								<option value="store">
 							</datalist>

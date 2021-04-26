@@ -84,6 +84,7 @@ echo $currentTime;
 						<label for="table">Choose a table from the list:</label>
 						<input list="tables" name="table" id="table">
 							<datalist id="tables">
+								<option value="actor">
 								<option value="address">
 								<option value="category">
 								<option value="city">
