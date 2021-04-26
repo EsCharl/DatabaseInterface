@@ -17,7 +17,12 @@ echo $currentTime;
 <!DOCTYPE html>
 <html>
 <head>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 <style>
+label{
+    font-family: 'Montserrat';
+    font-size: 15px;
+}
 table, th, td {
   border: 1px solid black;
   border-collapse: seperate;
