@@ -52,16 +52,7 @@ echo $currentTime;
 						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
-				
-				<div class="row">
-					<div class="col-2">
-						<label>Actor ID</label>
-					</div>
-					<div class="col-8">
-						<input type="number" placeholder="Enter Actor ID" name="actorC_id" value="<?php echo $actorC_id;?>"><br>
-					</div>
-				</div>
-                
+
 				<div class="row">
 					<div class="col-2">
 						<label>Film ID (change to)</label>
@@ -148,11 +139,8 @@ echo $currentTime;
                         if($filmC_id == ""){
                             $filmC_id = $film_id;
                         }
-                        if($actorC_id == ""){
-                            $actorC_id = $actor_id;
-                        }
 
-                        $query = "update film_actor SET film_id = $filmC_id, actor_id = $actorC_id, last_update = '$currentTime' WHERE actor_id=$actor_id && film_id=$film_id";
+                        $query = "update film_actor SET film_id = $filmC_id, last_update = '$currentTime' WHERE actor_id=$actor_id && film_id=$film_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
@@ -162,7 +150,7 @@ echo $currentTime;
 						}
                     }
                     else{
-                        echo '<script type="text/javascript">alert("Please input a film ID and an Actor ID")</script>';
+                        echo '<script type="text/javascript">alert("Please input all the fields")</script>';
                     }
 				}
 				
