@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig\config.php';
+require 'dbconfig/config.php';
 
 @$film_id="";
 @$category_id="";

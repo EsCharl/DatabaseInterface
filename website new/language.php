@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig\config.php';
+require 'dbconfig/config.php';
 
 @$language_id="";
 @$name="";
