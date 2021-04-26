@@ -27,7 +27,7 @@ echo $currentTime;
 
         <div class="inner_container">
 
-            <form action="country.php" method="post">
+            <form action="country.php" method="post" enctype="multipart/form-data">
 
 				<div class="row">
 					<div class="col-2">

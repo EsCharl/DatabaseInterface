@@ -28,9 +28,8 @@ echo $currentTime;
 
         <div class="inner_container">
 
-            <form action="category.php" method="post">
+            <form action="category.php" method="post" enctype="multipart/form-data">
 
-                <form action="staff.php" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-2">
 						<label>Category ID</label>

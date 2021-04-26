@@ -32,9 +32,8 @@ echo $currentTime;
 
         <div class="inner_container">
 
-            <form action="address.php" method="post">
+            <form action="address.php" method="post" enctype="multipart/form-data">
 
-                <form action="staff.php" method="post" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-2">
 						<label>Address ID (Insert / Update) (0 for NULL) </label>

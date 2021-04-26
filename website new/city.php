@@ -29,7 +29,7 @@ echo $currentTime;
 
         <div class="inner_container">
 
-            <form action="city.php" method="post">
+            <form action="city.php" method="post" enctype="multipart/form-data">
 
                 <div class="row">
 					<div class="col-2">
