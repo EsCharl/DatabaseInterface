@@ -25,7 +25,9 @@ label{
 }
 table, th, td {
   border: 1px solid black;
-  border-collapse: collapse;
+  border-collapse: seperate;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
 <title>Database</title>
