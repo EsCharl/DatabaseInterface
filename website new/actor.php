@@ -291,14 +291,14 @@ table, th, td {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
   if(isset($_POST['table'])){
-	  $name = $_POST['table'];
-  } else {
-	  $name = "0";
-  }
+	  
+	  if ($_POST['table'] == "") $redirect_name = "actor";
+	  else $redirect_name = $_POST['table'];
+	  $redirect_str = "<script>window.location.href='http://hcytt1.mercury.nottingham.edu.my/" . $redirect_name . ".php';</script>";
+	  echo $redirect_str;
+      exit();
+  } 
   
-  $redirect_str = "<script>window.location.href='http://hcytt1.mercury.nottingham.edu.my/" . $name . ".php';</script>";
-  echo $redirect_str;
-  exit();
 }
 ?>
 
