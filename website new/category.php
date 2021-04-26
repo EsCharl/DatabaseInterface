@@ -39,7 +39,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter category ID" name="category_id" value="<?php echo $category_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -51,7 +51,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter Category Name" name="name" value="<?php echo $name;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
 

@@ -39,7 +39,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter Actor ID" name="actor_id" value="<?php echo $actor_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -51,7 +51,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter First Name" name="first_name" value="<?php echo $first_name;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
 				
@@ -63,7 +63,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter Last Name" name="last_name" value="<?php echo $last_name;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
 

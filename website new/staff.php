@@ -43,7 +43,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter Staff ID" name="staff_id" value="<?php echo $staff_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -55,7 +55,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter First Name" name="first_name" value="<?php echo $first_name;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
 				
@@ -67,7 +67,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter Last Name" name="last_name" value="<?php echo $last_name;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
                 
@@ -79,7 +79,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch3_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch3_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -91,7 +91,7 @@ echo $currentTime;
 						<input type="file" name="picture" value=""/><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch4_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
 					</div>
 				</div>
 				
@@ -103,7 +103,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter Email Address" name="email" value="<?php echo $email;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch5_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch5_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -115,7 +115,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter Store ID" name="store_id" value="<?php echo $store_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch6_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch6_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -127,7 +127,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter 1 for Active, 0 for Deactive" name="active" value="<?php echo $active;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch7_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch7_btn" type="submit">Select</button>
 					</div>
 				</div>
 				

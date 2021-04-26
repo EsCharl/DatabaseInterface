@@ -43,7 +43,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -55,7 +55,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter Address" name="address" value="<?php echo $address;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch1_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -67,7 +67,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter address2" name="address2" value="<?php echo $address2;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch5_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch5_btn" type="submit">Select</button>
 					</div>
 				</div>
                 
@@ -79,7 +79,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter City ID" name="city_id" value="<?php echo $city_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
                 
@@ -91,7 +91,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter Postal Code" name="postal_code" value="<?php echo $postal_code;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch3_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch3_btn" type="submit">Select</button>
 					</div>
 				</div>
 				
@@ -103,7 +103,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter Phone Number" name="phone" value="<?php echo $phone;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch4_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
 					</div>
 				</div>
 

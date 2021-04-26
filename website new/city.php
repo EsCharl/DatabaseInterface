@@ -39,7 +39,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter City ID" name="city_id" value="<?php echo $city_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch0_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch0_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -51,7 +51,7 @@ echo $currentTime;
 						<input type="number" placeholder="Enter District ID" name="district_id" value="<?php echo $district_id;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
 				
@@ -63,7 +63,7 @@ echo $currentTime;
 						<input type="text" placeholder="Enter City Name" name="city" value="<?php echo $city;?>"><br>
 					</div>
 					<div class="col-2">
-						<button id="btn_go" name="fetch2_btn" type="submit">Go</button>
+						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
 
