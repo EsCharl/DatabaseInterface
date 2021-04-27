@@ -201,6 +201,9 @@ echo $currentTime;
                     {
                         echo '<script type="text/javascript">alert("Insert values in all fields")</script>';
                     }
+					else if($active > 1 || $active < 0){
+						echo '<script type="text/javascript">alert("Please input 1 or 0 in the Active field")</script>';
+					}
                     else{
                         if($address_id == "0"){
                             $address_id="NULL";
@@ -266,19 +269,20 @@ echo $currentTime;
                             }
 							
                         }
-
-                        $query = "UPDATE `staff` SET `first_name`='$first_name',`last_name`='$last_name',`address_id`='$address_id', `picture`='$picture', `email`='$email',`last_update`='$currentTime',active=$active,store_id=$store_id WHERE `staff_id`=$staff_id";
-                        $query_run = mysqli_query($con,$query);
-                        if($query_run){
-							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
+						if($active > 1 || $active < 0){
+							echo '<script type="text/javascript">alert("Please input 1 or 0 in the Active field")</script>';
+						}else{
+							$query = "UPDATE `staff` SET `first_name`='$first_name',`last_name`='$last_name',`address_id`='$address_id', `picture`='$picture', `email`='$email',`last_update`='$currentTime',active=$active,store_id=$store_id WHERE `staff_id`=$staff_id";
+							$query_run = mysqli_query($con,$query);
+							if($query_run){
+								echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
+							}
+							else{
+								echo '<script type="text/javascript">alert("Update Error Detected")</script>';
+								echo("Update Error description: " . $con -> error);
+							}
 						}
-						else{
-							echo '<script type="text/javascript">alert("Update Error Detected")</script>';
-							echo("Update Error description: " . $con -> error);
-						}
-						
-						
-                    }
+					}
                     else{
                         echo '<script type="text/javascript">alert("Please input a Staff ID")</script>';
                     }
