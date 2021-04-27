@@ -18,8 +18,14 @@ echo $currentTime;
 
 	<title>Database</title>
 	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<!-- Webpage Style -->
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style_mobile.css">
 	
 	<!-- Metadata -->
@@ -37,10 +43,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Film ID (insert / delete)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Film ID" name="film_id" value="<?php echo $film_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -49,10 +55,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Film Release Year (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Film Year" name="release_year" value="<?php echo $release_year;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -61,10 +67,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Language ID (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Language ID" name="language_id" value="<?php echo $language_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -73,10 +79,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Original Language ID (insert / change to) (0 for NULL)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Oringal Language ID" name="original_language_id" value="<?php echo $original_language_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch3_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -85,10 +91,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Length (insert / change to)</label><br>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Movie Length" name="length" value="<?php echo $length;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -97,18 +103,18 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Rating (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="text" placeholder="Enter Rating" name="rating" value="<?php echo $rating;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch5_btn" type="submit">Select</button>
 					</div>
 				</div>
 
                 <center>
-                    <button id="btn_insert" name="insert_btn" type="submit">Insert</button>
-                    <button id="btn_update" name="update_btn" type="submit">Update</button>
-                    <button id="btn_delete" name="delete_btn" type="submit">Delete</button>
+                    <button id="btn_insert" name="insert_btn" type="submit"><i class="fa fa-plus-square"></i> Insert</button>
+					<button id="btn_update" name="update_btn" type="submit"><i class="fa fa-edit"></i> Update</button>
+					<button id="btn_delete" name="delete_btn" type="submit"><i class="fa fa-trash"></i> Delete</button>
                 </center>
             </form>
 			

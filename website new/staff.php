@@ -96,9 +96,6 @@ echo $currentTime;
 					<div class="col-4">
 						<input type="file" name="picture" value=""/><br>
 					</div>
-					<div class="col-6">
-						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
-					</div>
 				</div>
 				
 				<div class="row">
@@ -663,7 +660,7 @@ echo $currentTime;
                     }
                 }
 
-                if(isset($_POST['fetch4_btn'])){
+                if(isset($_POST['fetch7_btn'])){
 
                     $active = $_POST['active'];
 

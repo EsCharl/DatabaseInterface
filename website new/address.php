@@ -18,8 +18,14 @@ echo $currentTime;
 
 	<title>Database</title>
 	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<!-- Webpage Style -->
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style_mobile.css">
 	
 	<!-- Metadata -->
@@ -38,10 +44,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Address ID (Insert / Update) (0 for NULL) </label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Address ID" name="address_id" value="<?php echo $address_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -50,10 +56,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Address (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="text" placeholder="Enter Address" name="address" value="<?php echo $address;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch1_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -62,10 +68,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Address2 (insert / change to) (- for NULL)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="text" placeholder="Enter address2" name="address2" value="<?php echo $address2;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch5_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -74,10 +80,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>City ID (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter City ID" name="city_id" value="<?php echo $city_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -86,10 +92,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Postal Code (insert / change to) (0 for NULL)</label><br>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Postal Code" name="postal_code" value="<?php echo $postal_code;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch3_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -98,10 +104,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Phone (insert / change to) (- for NULL)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="text" placeholder="Enter Phone Number" name="phone" value="<?php echo $phone;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -110,9 +116,9 @@ echo $currentTime;
                 <div class="row">
 					<div class="col-12">
 						<center>
-							<button id="btn_insert" name="insert_btn" type="submit">Insert</button>
-							<button id="btn_update" name="update_btn" type="submit">Update</button>
-							<button id="btn_delete" name="delete_btn" type="submit">Delete</button>
+							<button id="btn_insert" name="insert_btn" type="submit"><i class="fa fa-plus-square"></i> Insert</button>
+							<button id="btn_update" name="update_btn" type="submit"><i class="fa fa-edit"></i> Update</button>
+							<button id="btn_delete" name="delete_btn" type="submit"><i class="fa fa-trash"></i> Delete</button>
 						</center>
 					</div>
 				</div>

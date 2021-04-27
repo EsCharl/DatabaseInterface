@@ -21,8 +21,14 @@ echo $currentTime;
 
 	<title>Database</title>
 	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 	<!-- Webpage Style -->
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style_mobile.css">
 	
 	<!-- Metadata -->
@@ -40,10 +46,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Payment ID (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Payment ID" name="payment_id" value="<?php echo $payment_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch4_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -52,10 +58,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Customer ID (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Customer ID" name="customer_id" value="<?php echo $customer_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -64,10 +70,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Staff ID (insert / change to)</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Staff ID" name="staff_id" value="<?php echo $staff_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch5_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -76,10 +82,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Rental ID (insert / change to) (0 for NULL (Not for Update))</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" placeholder="Enter Rental ID" name="rental_id" value="<?php echo $rental_id;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch3_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -88,10 +94,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Amount (insert / change to)</label><br>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="number" step="0.01" placeholder="Enter Amount" name="amount" value="<?php echo $amount;?>"><br>
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch6_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -100,10 +106,10 @@ echo $currentTime;
 					<div class="col-2">
 						<label>Payment Date (blank for current date and time (insert))</label>
 					</div>
-					<div class="col-8">
+					<div class="col-4">
 						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="payment_date" value="<?php echo $payment_date;?>">
 					</div>
-					<div class="col-2">
+					<div class="col-6">
 						<button id="btn_go" name="fetch7_btn" type="submit">Select</button>
 					</div>
 				</div>
@@ -111,9 +117,9 @@ echo $currentTime;
                 <div class="row">
 					<div class="col-12">
 						<center>
-							<button id="btn_insert" name="insert_btn" type="submit">Insert</button>
-							<button id="btn_update" name="update_btn" type="submit">Update</button>
-							<button id="btn_delete" name="delete_btn" type="submit">Delete</button>
+							<button id="btn_insert" name="insert_btn" type="submit"><i class="fa fa-plus-square"></i> Insert</button>
+							<button id="btn_update" name="update_btn" type="submit"><i class="fa fa-edit"></i> Update</button>
+							<button id="btn_delete" name="delete_btn" type="submit"><i class="fa fa-trash"></i> Delete</button>
 						</center>
 					</div>
 				</div>
