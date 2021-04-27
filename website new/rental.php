@@ -524,7 +524,6 @@ echo $currentTime;
                 }
             ?>
         </div>
-    </div>
 
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
