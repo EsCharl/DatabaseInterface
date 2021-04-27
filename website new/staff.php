@@ -460,7 +460,6 @@ echo $currentTime;
 								}
 								else $mime_type = NULL;
 									
-								echo ($mime_type);
 								echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
 								echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
 								echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
@@ -522,7 +521,6 @@ echo $currentTime;
 									}
 									else $mime_type = NULL;
 									
-									echo ($mime_type);
 									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
 									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
 									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
@@ -579,7 +577,6 @@ echo $currentTime;
 									}
 									else $mime_type = NULL;
 									
-									echo ($mime_type);
 									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
 									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
 									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
@@ -640,8 +637,7 @@ echo $currentTime;
 										$mime_type = $image_info['mime'];
 									}
 									else $mime_type = NULL;
-									
-									echo ($mime_type);
+
 									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
 									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
 									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
@@ -698,7 +694,6 @@ echo $currentTime;
 									}
 									else $mime_type = NULL;
 									
-									echo ($mime_type);
 									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["first_name"] . '</td><td>' . $row["last_name"] . '</td><td>' . $row["address_id"] . '</td><td>';
 									echo '<img src="data:'.$mime_type.';base64,'.base64_encode($row['picture']).'"."\">' ;
 									echo '</td><td>' . $row["email"] . '</td><td>' . $row["store_id"] . '</td><td>' . $row["active"] . '</td><td>' . $row["last_update"] . '</td></tr>';
