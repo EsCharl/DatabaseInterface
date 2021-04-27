@@ -107,7 +107,7 @@ echo $currentTime;
 						<label>Payment Date (blank for current date and time (insert))</label>
 					</div>
 					<div class="col-4">
-						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="payment_date" value="<?php echo $payment_date;?>">
+						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss' or 'YYYY-MM-DD'" name="payment_date" value="<?php echo $payment_date;?>">
 					</div>
 					<div class="col-6">
 						<button id="btn_go" name="fetch7_btn" type="submit">Select</button>
@@ -225,7 +225,7 @@ echo $currentTime;
                             }
                         }
 
-                        $query = "UPDATE `payment` SET `rental_id`=$rental_id,`staff_id`='$staff_id',`last_update`='$currentTime',amount=$amount,payment_date=$payment_date, customer_id=$customer_id WHERE `payment_id`=$payment_id";
+                        $query = "UPDATE `payment` SET `rental_id`=$rental_id,`staff_id`='$staff_id',`last_update`='$currentTime',amount=$amount,payment_date='$payment_date', customer_id=$customer_id WHERE `payment_id`=$payment_id";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
 							echo '<script type="text/javascript">alert("Product Updated successfully")</script>';
@@ -491,7 +491,7 @@ echo $currentTime;
                         echo '<script type="text/javascript">alert("Enter the date")</script>';
                     }
                     else{
-                        $query = "select * from payment where payment_date='$payment_date'";
+                        $query = "select * from payment where payment_date LIKE '$payment_date%'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">

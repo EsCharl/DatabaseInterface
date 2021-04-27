@@ -56,7 +56,7 @@ echo $currentTime;
 						<label>Rental Date (blank for current date&time (insert))</label>
 					</div>
 					<div class="col-4">
-						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="rental_date" value="<?php echo $rental_date;?>"><br>
+						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss' or 'YYYY-MM-DD'" name="rental_date" value="<?php echo $rental_date;?>"><br>
 					</div>
 					<div class="col-6">
 						<button id="btn_go" name="fetch6_btn" type="submit">Select</button>
@@ -92,7 +92,7 @@ echo $currentTime;
 						<label>Return Date (blank for current D&T (ONLY update), - for NULL)</label><br>
 					</div>
 					<div class="col-4">
-						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="return_date" value="<?php echo $return_date;?>"><br>
+						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss' or 'YYYY-MM-DD'" name="return_date" value="<?php echo $return_date;?>"><br>
 					</div>
 					<div class="col-6">
 						<button id="btn_go" name="fetch7_btn" type="submit">Select</button>
@@ -451,7 +451,7 @@ echo $currentTime;
                         echo '<script type="text/javascript">alert("Enter Rental Date for data")</script>';
                     }
                     else{
-                        $query = "select * from rental where rental_date='$rental_date'";
+                        $query = "select * from rental where rental_date LIKE '$rental_date%'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -494,7 +494,7 @@ echo $currentTime;
                         echo '<script type="text/javascript">alert("Enter the Return Date for data")</script>';
                     }
                     else{
-                        $query = "select * from rental where return_date='$return_date'";
+                        $query = "select * from rental where return_date LIKE '$return_date%'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">

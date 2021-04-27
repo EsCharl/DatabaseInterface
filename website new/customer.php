@@ -131,7 +131,7 @@ echo $currentTime;
 						<label>Create Date (date and time) (Insert: blank for current date and time)</label>
 					</div>
 					<div class="col-4">
-						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss'" name="create_date" value="<?php echo $create_date;?>"><br>
+						<input type="text" placeholder="Enter in the format of 'YYYY-MM-DD HH:mm:ss' or 'YYYY-MM-DD'" name="create_date" value="<?php echo $create_date;?>"><br>
 					</div>
 					<div class="col-6">
 						<button id="btn_go" name="fetch7_btn" type="submit">Select</button>
@@ -643,7 +643,7 @@ echo $currentTime;
                         echo '<script type="text/javascript">alert("Enter the date")</script>';
                     }
                     else{
-                        $query = "select * from customer where create_date=$create_date";
+                        $query = "select * from customer where create_date=$create_date%";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
