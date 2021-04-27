@@ -4,6 +4,7 @@ require 'dbconfig/config.php';
 @$staff_id="";
 @$username="";
 @$password="";
+@$loops = 0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -262,8 +263,11 @@ echo $currentTime;
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td></tr>' ;
+								while (mysqli_num_rows($query_run) != $loops){
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td></tr>';
+									$loops++;
+								}
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Username")</script>';
@@ -301,8 +305,11 @@ echo $currentTime;
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td></tr>';
+								while (mysqli_num_rows($query_run) != $loops){
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+									echo '<tr><td>', $row["staff_id"] . '</td><td>' . $row["username"] . '</td><td>' . $row["password"] . '</td></tr>';
+									$loops++;
+								}
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Password")</script>';

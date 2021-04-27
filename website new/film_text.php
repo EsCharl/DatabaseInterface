@@ -4,6 +4,7 @@ require 'dbconfig/config.php';
 @$film_id="";
 @$title="";
 @$description="";
+@$loops = 0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -65,6 +66,9 @@ echo $currentTime;
 					</div>
 					<div class="col-4">
 						<input type="text" placeholder="Enter Description" name="description" value="<?php echo $description;?>"><br>
+					</div>
+					<div class="col-6">
+						<button id="btn_go" name="fetch2_btn" type="submit">Select</button>
 					</div>
 				</div>
 
@@ -242,7 +246,7 @@ echo $currentTime;
                         echo '<script type="text/javascript">alert("Enter title to get data")</script>';
                     }
                     else{
-                        $query = "select * from film_text where title='$title'";
+                        $query = "select * from film_text where title LIKE '%$title%'";
                         $query_run = mysqli_query($con,$query);
                         if($query_run){
                             echo '<div class = "w3-container">
@@ -257,14 +261,52 @@ echo $currentTime;
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-                                $row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["film_id"] . '</td><td>' . $row["title"] . '</td><td>' . $row["description"] . '</td></tr>';
-                                //@$film_id=$row['film_id'];
-                                //@$title=$row['title'];
-                                //@$description=$row['description'];
+                               while (mysqli_num_rows($query_run) != $loops){
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+									echo '<tr><td>', $row["film_id"] . '</td><td>' . $row["title"] . '</td><td>' . $row["description"] . '</td></tr>';
+									$loops++;
+								}
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Title Name")</script>';
+							}
+						}
+						else{
+							echo '<script type="text/javascript">alert("Error in query")</script>';
+						}
+                    }
+                }
+				else if(isset($_POST['fetch2_btn'])){
+
+                    $description = $_POST['description'];
+
+                    if($description==""){
+                        echo '<script type="text/javascript">alert("Enter Description to get data")</script>';
+                    }
+                    else{
+                        $query = "select * from film_text where description LIKE '%$description%'";
+                        $query_run = mysqli_query($con,$query);
+                        if($query_run){
+                            echo '<div class = "w3-container">
+            
+                                <table class="w3-table_all">
+                                <tread>
+                                <tr class="w3-light-grey">
+                                <th>Film ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                </tr>
+                                </tread>';
+                            if(mysqli_num_rows($query_run)>0)
+							{
+                                while (mysqli_num_rows($query_run) != $loops){
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+									echo '<tr><td>', $row["film_id"] . '</td><td>' . $row["title"] . '</td><td>' . $row["description"] . '</td></tr>';
+									$loops++;
+								}
+							}
+							else{
+								echo '<script type="text/javascript">alert("Invalid Description")</script>';
 							}
 						}
 						else{

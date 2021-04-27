@@ -3,6 +3,7 @@ require 'dbconfig/config.php';
 
 @$country_id="";
 @$country="";
+@$loops=0;
 $currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
 echo $currentTime;
 ?>
@@ -240,8 +241,11 @@ echo $currentTime;
                                 </tread>';
                             if(mysqli_num_rows($query_run)>0)
 							{
-								$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
-                                echo '<tr><td>', $row["country_id"] . '</td><td>' . $row["country"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+                                while (mysqli_num_rows($query_run) != $loops){
+									$row = mysqli_fetch_array($query_run,MYSQLI_ASSOC);
+									echo '<tr><td>', $row["country_id"] . '</td><td>' . $row["country"] . '</td><td>' . $row["last_update"] . '</td></tr>';
+									$loops++;
+                                }
 							}
 							else{
 								echo '<script type="text/javascript">alert("Invalid Country Name")</script>';
