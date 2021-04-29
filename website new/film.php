@@ -8,7 +8,7 @@ require 'dbconfig/config.php';
 @$original_language_id="";
 @$rating="";
 @$loops = 0;
-$currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
+$currentTime = date("Y-m-d H:i:s", strtotime('+8 hours'));
 echo $currentTime;
 ?>
 

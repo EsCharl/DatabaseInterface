@@ -4,7 +4,7 @@ require 'dbconfig/config.php';
 @$country_id="";
 @$country="";
 @$loops=0;
-$currentTime = date("Y-m-d H:i:s", strtotime('+6 hours'));
+$currentTime = date("Y-m-d H:i:s", strtotime('+8 hours'));
 echo $currentTime;
 ?>
 
