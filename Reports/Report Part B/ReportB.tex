@@ -292,7 +292,8 @@
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_city_norm}
 			\caption{Table "City", normalized.}
-		\end{figure}
+		\end{figure} 
+		Note that \textbf{original\textunderscore film\textunderscore id} now has a foreign key relation with the Language table to increase consistency. Its database has consequently been coverted to \textbf{int}.
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_film_norm}
 			\caption{Table "Film", normalized.}
@@ -353,6 +354,14 @@
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{customer_restrict}
 			\caption{The table "Rental" having its ON DELETE relation with "Customer" modified to RESTRICT.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{address_restrict}
+			\caption{The table "Store" having its ON DELETE relation with "Address" modified to RESTRICT.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{store_restrict}
+			\caption{The table "Staff" having its ON DELETE relation with "Store" modified to RESTRICT.}
 		\end{figure}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{film_restrict}
