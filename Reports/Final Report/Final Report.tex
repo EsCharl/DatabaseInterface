@@ -1,8 +1,8 @@
-\documentclass{article}
+\documentclass[openany]{article}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage[colorlinks]{hyperref}
-\graphicspath{{Illustrations/}}
+\graphicspath{{Illustrations/} {Illustrations/Website/}}
 
 \title{\textbf{COMP1044 Coursework Assignment 2 Final Report} \\ Group 15 / Chew Language}
 \author{
@@ -23,16 +23,18 @@
 \begin{document}
 \maketitle
 \newpage
+\tableofcontents
+\newpage
 
-\section*{Report Part A}
-\section{Database Design Diagram}
+\section{Report Part A}
+\subsection{Entity Relation Diagram, 1st Iteration}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{DBICourseworkA}
 		\caption{Proposed model for database.}	
 	\end{figure}
 	\rule{\textwidth}{0.4pt}
 		
-\section{Datatype Selection}
+\subsection{Datatype Selection}
 	For every field we chose the datatype depending on what would both match the data we had available and take up the lowest amount of memory possible 
 	while still ensuring that the type and length would be suitable for all new entries. 
 	\\\\
@@ -51,7 +53,7 @@
 	\\
 	\rule{\textwidth}{0.4pt}
 	
-\section{Reasoning for Primary and Foreign Key Choice}
+\subsection{Reasoning for Primary and Foreign Key Choice}
 	When we were deciding on what to pick for the primary key for each time we understood that it had to be both unique and non-null. 
 	This is because the primary key serves as the identifier for each record in the table and if it is either repeated or \textsc{null} it can no longer serve as an identifier. 
 	The obvious candidate here was  the ID field in every table (for instance the \emph{inventory\textunderscore id} in the inventory table) as it fulfils both of these criteria.
@@ -63,7 +65,7 @@
 	\\
 	\rule{\textwidth}{0.4pt}
 
-\section{Completeness of the Dataset}
+\subsection{Completeness of the Dataset}
 	The database was relatively complete and we did not struggle with the quality of the data. We found that the data values were consistent across the different tables. This meant
 	 that we didn’t run into any issues regarding the foriegn keys and we didn’t find conflicting information in the data set.
 	\\\\
@@ -80,7 +82,7 @@
 	\\
 	\rule{\textwidth}{0.4pt}
 
-\section{Errors in the Database}
+\subsection{Errors in the Database}
 	We also noticed that in \emph{country.csv} and \emph{customer.csv} that there wasn’t a consistent delimiter. The file alternated between using commas 
 	and semicolons to separate data. The lack of support for semicolon delimiters made it impossible to import the data into the database while keeping it in its intended format. 
 	To remedy this we replaced the semicolons with commas wherever applicable using text editors.
@@ -98,27 +100,27 @@
 	\\
 	\rule{\textwidth}{0.4pt}
 
-\section{Conclusion}
+\subsection{Conclusion}
 	At the point of writing, the team determined the database to be sufficient for further usage, due to SELECT queries functioning properly when used to select specific rows in the tables.
 
 \newpage
 
-\section*{Report Part B}
-\section{Entity Relation Diagram}
-	\begin{figure}[h!]
-		\includegraphics[height=.8\textheight, width=\textwidth]{er_diagram}
+\section{Report Part B}
+\subsection*{Entity Relation Diagram (For Reference)}
+	\begin{figure}[H]
+		\includegraphics[width=\textwidth,height=15cm]{er_diagram}
 		\caption{Proposed Entity Relation Diagram arrangement. \protect\footnotemark}	
 	\end{figure}
 	\footnotetext{This diagram is based on available table data provided.}
 
 
-\section{Database Creation}
+\subsection{Database Creation}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{database_create}
 		\caption{Creation of database "Entertainment"}	
 	\end{figure}
 	\rule{\textwidth}{0.4pt}
-\section{Creation and Insertion of Tables}
+\subsection{Creation and Insertion of Tables}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{table_actor_cins}
 		\caption{Creation and Insertion of table "Actor"}	
@@ -143,6 +145,7 @@
 		\includegraphics[width=\textwidth]{table_customer_cins}
 		\caption{Creation and Insertion of table "Customer"}	
 	\end{figure}
+	Note that the original\textunderscore language\textunderscore id column's datatype is converted to an \textbf{int} later due to foreign key changes after normaliztion.
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{table_film_cins}
 		\caption{Creation and Insertion of table "Film"}	
@@ -184,20 +187,21 @@
 		\caption{Creation and Insertion of table "Store"}	
 	\end{figure}
 
-\section{Table Constraints (Foreign Keys)}
+\subsection{Table Constraints (Foreign Keys)}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{tableconstraints1}
 		\includegraphics[width=\textwidth]{tableconstraints2}
 	\end{figure}
 
-\section{Table Indexes (Primary/Foreign Keys)}
+\subsection{Table Indexes (Primary/Foreign Keys)}
+	Amendment: original\textunderscore language\textunderscore id in the "Film" table is later linked to the "Language" table as a foreign key in the current database version after normalization.
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{tableindexkeys1}
 		\includegraphics[width=\textwidth]{tableindexkeys2}
 		\includegraphics[width=\textwidth]{tableindexkeys3}
 	\end{figure}	
 
-\section{Table Structures}
+\subsection{Table Structures}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{table_actor_struct}
 		\caption{Structure of table "Actor"}	
@@ -230,6 +234,7 @@
 		\includegraphics[width=\textwidth]{table_filmcategory_struct}
 		\caption{Structure of table "Film\textunderscore Category"}	
 	\end{figure}
+	Amendment: The original\textunderscore language\textunderscore id field is represented as an \textbf{int} in the latest iteration of the database.
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{table_film_struct}
 		\caption{Structure of table "Film"}	
@@ -263,18 +268,18 @@
 		\caption{Structure of table "Store"}	
 	\end{figure}
 
-\section{Final Results of Data Insertion \& Selection}
+\subsection{Final Results of Data Insertion \& Selection}
 	\begin{figure}[H]
-		\includegraphics[width=\textwidth]{data_insertion_selection}
+		\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{data_insertion_selection}
 	\end{figure}	
 
-\section{Overview on Tables of Database "Entertainment"}
+\subsection{Overview on Tables of Database "Entertainment"}
 	\begin{figure}[H]
 		\includegraphics[width=\textwidth]{table_overview}
 		\caption{Summary of tables within the database.}
 	\end{figure}	
 	
-	\subsection{Table Contents}
+	\subsubsection{Table Contents}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{actor_content}
 			\caption{Sample content of the table "Actor".}
@@ -299,6 +304,7 @@
 			\includegraphics[width=\textwidth]{customer_content}
 			\caption{Sample content of the table "Customer".}
 		\end{figure}
+		Amendment: The content of original\textunderscore language\textunderscore id is NULL throughout in the table "Film" as of the current iteration.
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{film_content}
 			\caption{Sample content of the table "Film".}
@@ -340,14 +346,14 @@
 			\caption{Sample content of the table "Store".}
 		\end{figure}
 
-\section{Normalization}
-	\subsection{Entity Relation Diagram After Normalization}
+\subsection{Normalization}
+	\subsubsection{Entity Relation Diagram After Normalization}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{er_normalized}
 			\caption{Database structure after normalization.}
 		\end{figure}
 
-	\subsection{Tables Affected by Normalization}
+	\subsubsection{Tables Affected by Normalization}
 		The tables Film\textunderscore Special\textunderscore Features is normalized from the Film table to preserve compliance with the First Normal Form. 
 		\begin{figure}[H]
 			\includegraphics[height = \textheight]{table_filmspecialfeatures_norm}
@@ -393,7 +399,7 @@
 		\end{figure}
 
 
-	\subsection{Table Structures After Normalization}
+	\subsubsection{Table Structures After Normalization}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{table_district_nstruct}
 			\caption{Structure of table "District", normalized.}
@@ -415,7 +421,7 @@
 			\caption{Structure of table "Staff\textunderscore Login", normalized.}
 		\end{figure}
 	
-	\subsection{Foreign Key Relations After Normalization}
+	\subsubsection{Foreign Key Relations After Normalization}
 		To preserve the integrity of relations inside of the database, foreign key constraints within the database have been modified based on these criterion:
 		\begin{itemize}
 			\item Two foreign keys have been modified with ON DELETE CASCADE as the deletion of table data involving these foreign keys will only affect this one table, and will not cascade down the entire database. The tables involved are "Film\textunderscore Actor" and "Film\textunderscore Category", which have their primary keys in the tables "Actor" and "Category" respectively. 
@@ -461,19 +467,33 @@
 			\caption{The default setting for foreign key relations with other tables in this database.}
 		\end{figure}
 
-	\subsection{Insertion After Normalization}
+	\subsubsection{Insertion After Normalization}
 		\begin{figure}[H]
-			\includegraphics[height=16cm]{specialfeatures11_insert}
-			\caption{Insertion of new data into the table "Special\textunderscore Features" after normalization}
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{specialfeatures11_insert}
+			\caption{Insertion of new data into the table "Film\textunderscore Special\textunderscore Features" after normalization}
 		\end{figure}
 		\begin{figure}[H]
-			\includegraphics[height=16cm]{district1_insert_norm}
-			\includegraphics[width=\textwidth]{district2_insert_norm}
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{filmrental_insert_norm}
+			\caption{Insertion of new data into the table "Film\textunderscore Rental" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{address_insert_norm}
+			\caption{Insertion of new data into the table "Address" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{film_insert_norm}
+			\caption{Insertion of new data into the table "Film" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{customer1_insert_norm}
+			\caption{Insertion of new data into the table "Customer" after normalization}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{district1_insert_norm}
 			\caption{Insertion of new data into the table "District" after normalization}
 		\end{figure}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{city1_insert_norm}
-			\includegraphics[width=\textwidth]{city2_insert_norm}
 			\caption{Insertion of new data into the table "City" after normalization}
 		\end{figure}
 		\begin{figure}[H]
@@ -487,7 +507,8 @@
 			\caption{Insertion of new data into the table "Staff\textunderscore Login" after normalization}
 		\end{figure}
 
-	\subsection{Deletion After Normalization}
+	\subsubsection{Deletion After Normalization}
+		Due to repurposing of Staff IDs into an Auto Incremented Primary Key, the following deletions were made to bring all the tables into consistency.
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{staff1_delete_norm}
 			\includegraphics[width=\textwidth]{staff2_delete_norm}
@@ -499,14 +520,14 @@
 			\caption{Data deletion from the table "Staff\textunderscore Login" after normalization}
 		\end{figure}
 
-	\subsection{Updates After Normalization}
+	\subsubsection{Updates After Normalization}
 		\begin{figure}[H]
 			\includegraphics[width=\textwidth]{stafflogin1_update_norm}
 			\includegraphics[width=\textwidth]{stafflogin2_update_norm}
 			\caption{Update on the table "Staff\textunderscore Login" after normalization}
 		\end{figure}
 
-\section{Selections Based on Original Database Using the WHERE Keyword} 
+\subsection{Selections Based on Original Database Using the WHERE Keyword} 
 		\begin{figure}[H]
 			\includegraphics[height = 16cm]{customer_selectwhere}
 			\caption{Table "Customer"}
@@ -529,16 +550,46 @@
 		\end{figure}
 
 \newpage
-\section*{Report Part C}
+\section{Report Part C}
 
-\section{Website Link}
+\subsection{Website Link}
 	\begin{center}
 		\href{http://hcytt1.mercury.nottingham.edu.my/address.php}{Link to the Mercury Website}
 	\end{center}
 
-\section{Website Video Showcase}
+\subsection{Website Video Showcase}
 	\begin{center}
 		\href{https://numcmy-my.sharepoint.com/:v:/g/personal/hcycl3_nottingham_edu_my/EXSHVn9W0NpKs46qVvkPRaYB7jFJyir5uJE3W_kIAa8p0g?e=dCDxFW}{Link to Demonstration Video (OneDrive)}
 	\end{center}
+
+\subsection{Github Repository Link}
+	\begin{center}
+		\href{https://github.com/HolyKritGrenade/comp1044dbi_cw2webcode}{Link to Webcode}
+	\end{center}
+
+\subsection{Website Features}
+	The website includes multiple features to enhance the user experience of the website. Among these include:
+	\begin{itemize}
+		\item Basic insertion, update and deletion functionality
+		\item Ability to search for specific database entries via any column via Selection
+		\item No requirement for all data fields to be filled for updates
+		\item Responsive website elements that will adapt to fit screens of any resolution and size
+		\item Dropdown bar to ease transitioning between different tables
+		\item Dialogs to report database status after any operation
+		\item CSS design to enhance the visual appeal and increase fluidity of all website elements
+	\end{itemize}
+\subsection{Website Interface and Code Examples}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{css}
+			\caption{CSS code to design the website and ensure mobile compatibility.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth]{Country (PC view)}
+			\caption{Website view with a desktop monitor.}
+		\end{figure}
+		\begin{figure}[H]
+			\includegraphics[width=\textwidth, height=\textheight, keepaspectratio]{Country (Mobile view)}
+			\caption{Website view with a mobile device.}
+		\end{figure}
 
 \end{document}
